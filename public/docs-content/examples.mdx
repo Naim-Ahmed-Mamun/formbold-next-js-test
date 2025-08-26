@@ -1,0 +1,136 @@
+<!-- Generated at: 2025-05-14T06:59:03.069Z -->
+
+---
+title: Code Examples
+description: In this part of the documentation, you'll see all the code examples. How to use the Formbold Form API to handle the form. 
+---
+
+# Code Examples
+
+
+
+FormBold provides free Form API that works with all frameworks, libraries, and platforms.
+
+These code examples will help you to get started easily and to understand code structure in action.
+
+## Plain HTML
+
+Simple FormBold code example on a plain HTML project.
+
+```html copy
+<form action="https://formbold.com/s/FORM_ID" method="POST">
+  <input type="email" placeholder="Email" name="email" />
+  <input type="text" placeholder="Subject" name="subject" />
+  <textarea name="message" placeholder="Type your message"></textarea>
+
+	<button type="submit">Send Message</button>
+</form>
+```
+
+
+
+## Plain HTML with reCAPTCHA
+
+Simple FormBold code example with reCAPTCHA on an HTML project.
+
+```html copy
+// Loading reCAPTCHA script
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form action="https://formbold.com/s/FORM_ID" method="POST">
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  // Insert reCAPTCHA site key here
+  <div class="g-recaptcha" data-sitekey="your recaptcha site key"></div>
+  <button type="submit">Send</button>
+</form>
+```
+
+
+
+## React / Next.js 
+
+This example code will work in the same way with NextJS and Gatsby
+
+```jsx copy
+import { useForm } from "formbold-react";
+
+function Form() {
+  const [state, handleSubmit] = useForm("Form_ID");
+
+  if (state.succeeded) {
+    return <div>Form submitted successfully</div>;
+  }
+
+  return (
+    <>
+      <h1>Home Page</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <input id="email" type="email" name="email" required />
+        <textarea id="message" name="message" required />
+        <button type="submit">Submit</button>
+
+        <div>{state.error && state.error.message}</div>
+      </form>
+    </>
+  );
+}
+
+export default Form;
+```
+
+
+
+## React / Next.js with reCAPTCHA
+
+This example code will work in the same way with Next.js and Gatsby, for reCAPTCHA you’ll have to install the dependency by this command:
+
+```bash  copy
+npm install react-google-recaptcha
+```
+
+```jsx copy
+import { useForm } from "formbold-react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { createRef } from "react";
+
+function Form() {
+  const [state, handleSubmit] = useForm("Form_ID");
+  const recaptchaRef = createRef();
+
+  if (state.succeeded) {
+    return <div>Form submitted successfully</div>;
+  }
+
+  return (
+    <>
+      <h1>Home Page</h1>
+      <form onSubmit={(e) => handleSubmit(e, recaptchaRef)}>
+        <label htmlFor="email">Email Address</label>
+        <input id="email" type="email" name="email" required />
+        <textarea id="message" name="message" required />
+
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          // Insert reCAPTCHA site key here
+          sitekey="Recaptcha site key"
+        />
+        <button type="submit">Submit</button>
+
+        <div>{state.error && state.error.message}</div>
+      </form>
+    </>
+  );
+}
+
+export default Form;
+```
+
+

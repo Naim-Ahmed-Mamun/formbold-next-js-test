@@ -1,0 +1,159 @@
+---
+title: "Nuxt Contact Form with Free Backend API (No Server Setup)"
+description: "Build a Nuxt contact form without any backend logic. Use FormBold’s free API to handle form submissions instantly—includes example form code."
+
+heading: "Nuxt Contact Form for Web Apps"
+subheading: "Easily create a contact form in your Nuxt app—no backend, JavaScript libraries, or server config required. Just use FormBold’s API endpoint to start collecting submissions instantly."
+
+ctaTitle: "Create Nuxt JS Contact Form with FormBold"
+ctaDescription: "Generate your free API endpoint and launch your Nuxt contact form in minutes—no backend required."
+
+icon: "/platforms/nuxtjs.svg"
+---
+
+## Nuxt JS Contact Form with Backend API
+
+Add a fully working contact form to your Nuxt.js project without writing any backend code. With FormBold, all it takes is a few steps—just add your unique API endpoint to the form’s action attribute, and you're ready to launch.
+
+```html
+<template>
+  <form @submit.prevent="submitForm">
+    <div>
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        v-model="email"
+        required
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        placeholder="Subject"
+        name="subject"
+        v-model="subject"
+        required
+      />
+    </div>
+
+    <div>
+      <textarea
+        name="message"
+        rows="6"
+        placeholder="Type your message"
+        v-model="message"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit">Send Message</button>
+  </form>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        email: "",
+        subject: "",
+        message: "",
+      };
+    },
+    methods: {
+      async submitForm() {
+        const response = await fetch("https://formbold.com/s/unique_form_id", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: this.email,
+            subject: this.subject,
+            message: this.message,
+          }),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert(result.message);
+          this.$el.reset();
+        } else {
+          alert(response.message || "Something went wrong");
+        }
+      },
+    },
+  };
+</script>
+```
+
+## See How It Works
+
+Setting up a contact form in Nuxt with FormBold is quick and backend-free.
+
+1. **Create an Account**
+
+	Sign up on FormBold and generate your unique form endpoint URL.
+
+2. **Paste the Action URL**
+
+	Use the sample form code inside your Nuxt component and update the action with your FormBold endpoint.
+
+3. **Start Receiving Submissions**
+
+	Submissions are sent securely to your dashboard, inbox, or any connected apps.
+
+## Key Features of FormBold
+
+Powerful backend features for your Nuxt JS forms—without the complexity.
+
+- **No Backend Needed**
+
+	Works seamlessly with both static and server-rendered Nuxt sites.
+
+- **Instant Notifications**
+
+	Receive submissions directly in your email, Slack, Telegram, Google Sheets, and more.
+
+- **Spam & Bot Protection**
+
+	Includes server-side validation and optional Google reCAPTCHA to keep bots away.
+
+- **File Upload Ready**
+
+	Allow users to upload files and receive CDN-hosted download links with every submission.
+
+- **Connect with 5+ Apps**
+
+	Integrate your form with productivity tools like Notion, Sheets, and Slack—no coding required.
+
+
+## Frequently Asked Questions
+
+Get answer to common questions about building a contact form in Nuxt with FormBold.
+
+1. **How do I create a contact form in Nuxt?**
+
+	Just add your FormBold API endpoint to the form’s action and use method="POST". No JavaScript or backend needed.
+
+2. **Can I get submissions via email?**
+
+	Yes. You’ll receive every form submission directly in your inbox or connected third-party apps.
+
+3. **Is this secure?**
+
+	Yes. All data is encrypted and securely processed via FormBold’s backend.
+
+4. **Does it support file uploads?**
+
+	Absolutely. Users can upload files, and you’ll get secure download links via FormBold’s CDN.
+
+5. **Do I need any backend or plugin in Nuxt JS?**
+
+	Not at all. Just use the API endpoint—FormBold handles all backend operations for you.
+
+6. **Is there a free version?**
+
+	Yes. FormBold’s free tier is perfect for small Nuxt projects, MVPs, and personal sites.
+
+

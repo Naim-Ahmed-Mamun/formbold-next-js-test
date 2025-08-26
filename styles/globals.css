@@ -1,0 +1,437 @@
+@import 'tailwindcss';
+
+/* @plugin 'tailwind-scrollbar' {
+  nocompatible: true;
+} */
+@plugin '@tailwindcss/typography';
+
+@import 'nextra-theme-docs/style.css';
+
+/* @source '../node_modules/nextra-theme-docs*.{js,ts,jsx,tsx,mdx}'; */
+
+@theme {
+  --font-body: var(--font-inter);
+  --font-heading: var(--font-satoshi);
+
+  --color-primary: #5750f1;
+  --color-black: #140b3d;
+  --color-body-color: #6c6f93;
+  --color-bg-color: #f9f9f9;
+  --color-stroke: #dde3ec;
+  --color-twitter: #00afed;
+  --color-facebook: #1773ea;
+  --color-standard: #e1578a;
+  --color-business: #39a388;
+  --color-text-color: #536387;
+  --color-fb-gray: #f7f9fc;
+  --color-fb-gray-2: #f3f4f6;
+  --color-fb-gray-3: #e5e7eb;
+  --color-fb-gray-4: #d1d5db;
+  --color-fb-gray-5: #;
+  --color-fb-gray-6: #6b7280;
+  --color-fb-primary-hover: #3c35d8;
+  --color-fb-orange: #f27430;
+  --color-orange-light-4: #fde5d8;
+  --color-orange-light-6: #fff8f5;
+  --color-fb-stroke: #eaeff5;
+  --color-fb-yellow-dark: #f59e0b;
+  --color-fb-green: #22ad5c;
+  --color-fb-green-light-7: #e9fbf0;
+  --color-fb-dark-5: #bbbec9;
+  --color-fb-red-dark: #e10e0e;
+  --color-fb-red-light-5: #feebeb;
+  --color-fb-red-light-6: #fef3f3;
+  --color-fb-black: #22212d;
+
+  --background-image-gradient-radial: radial-gradient(
+    var(--gradient-color-stops)
+  );
+
+  --shadow-card: 0px 0px 3px rgba(0, 0, 0, 0.15);
+  --shadow-app: 0px 18px 57px -10px rgba(0, 0, 0, 0.1);
+  --shadow-feature: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-feature2: 0px 1px 2px rgba(84, 87, 118, 0.1), 0 0 0 2px #5750f1;
+  --shadow-accordion: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-integration: 0px 7px 31px rgba(0, 0, 0, 0.05);
+  --shadow-box: 0px 4px 25px rgba(0, 0, 0, 0.08);
+  --shadow-input: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  --shadow-sticky: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-fb-one: 0px 1px 2px rgba(84, 87, 118, 0.1);
+  --shadow-fb-two:
+    0px 6px 24px 0px rgba(235, 238, 251, 0.4),
+    0px 2px 4px 0px rgba(148, 163, 184, 0.05);
+  --shadow-fb-three:
+    0px 8px 8.4662504196167px 0px rgba(113, 116, 152, 0.05),
+    0px 8px 16.22439956665039px 0px rgba(113, 116, 152, 0.07),
+    0px 18px 31px 0px rgba(113, 116, 152, 0.1);
+  --shadow-fb-four: 0px 120px 164px -32px rgba(107, 110, 148, 0.04);
+  --shadow-fb-seven: 0px 18px 25px rgba(113, 116, 152, 0.05);
+  --shadow-copy-hover:
+    0px 15px 20px rgba(113, 116, 152, 0.05),
+    0px 6px 10px rgba(113, 116, 152, 0.07);
+  --shadow-fb-top: 0px 1px 2px 0px rgba(84, 87, 118, 0.1);
+  --shadow-input-hover: inset 0 0 0 2px #5750f1;
+  --shadow-step: 0px 50px 100px -32px rgba(107, 110, 148, 0.13);
+
+  --drop-shadow-app: 0px 4px 13px rgba(0, 0, 0, 0.05);
+  --drop-shadow-testimonial: 0px 0px 3px rgba(0, 0, 0, 0.13);
+  --drop-shadow-video: 0px 3px 10px rgba(0, 0, 0, 0.11);
+  --drop-shadow-dropdown: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  --drop-shadow-payment-method: 0px 2px 3px rgba(0, 0, 0, 0.05);
+
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 540px;
+  --breakpoint-md: 720px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1140px;
+  --breakpoint-2xl: 1320px;
+  --breakpoint-3xl: 1520px;
+
+  --spacing-4_5: 18px;
+  --spacing-5_5: 22px;
+  --spacing-6_5: 26px;
+  --spacing-7_5: 30px;
+
+  --aspect-blog: 30 / 17;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility box-bg {
+  background: radial-gradient(
+    180px circle at var(--mouse-x) var(--mouse-y),
+    #030014,
+    transparent
+  );
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply font-body text-base leading-relaxed text-body-color;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 959px) {
+    .header-navbar {
+      @apply max-h-[400px] overflow-y-auto;
+    }
+  }
+
+  .blog-post > h3 {
+    @apply mb-6 pt-4 text-2xl font-semibold text-black md:text-3xl;
+  }
+
+  .blog-post > p {
+    @apply mb-8 text-base font-medium leading-relaxed text-body-color;
+  }
+
+  .gradient-primary {
+    background-image: linear-gradient(
+      94.74deg,
+      #a356f3 0%,
+      #6a64f1 50%,
+      #a356f3 100%
+    );
+    background-size: 200% auto;
+    @apply transition-all duration-300;
+  }
+
+  .gradient-primary:hover {
+    background-position: right;
+  }
+  .btn {
+    @apply rounded-lg text-base font-semibold capitalize text-white;
+  }
+
+  .single-app:hover > .arrow-btn {
+    @apply opacity-100!;
+  }
+
+  /* markdown and blog Style */
+  .markdown_container h1,
+  .blogDetailBody h1 {
+    @apply mb-8 mt-0 text-2xl font-bold leading-tight! text-black sm:text-4xl md:text-[45px];
+  }
+  .markdown_container h2,
+  .blogDetailBody h2 {
+    @apply mb-3 text-xl font-bold text-body-color sm:text-3xl;
+  }
+
+  .integration h2,
+  .integration h3 {
+    @apply text-black;
+  }
+
+  .markdown_container h3,
+  .blogDetailBody h3,
+  .markdown_container hr,
+  .blogDetailBody hr {
+    @apply mb-3 mt-5 text-lg font-semibold text-primary sm:text-2xl;
+  }
+
+  .blogDetailBody h3 {
+    @apply text-lg md:text-2xl;
+  }
+
+  .markdown_container div {
+    @apply mb-10;
+  }
+
+  .markdown_container p,
+  .blogDetailBody p {
+    @apply mb-4 text-base font-normal leading-relaxed text-body-color;
+  }
+
+  .markdown_container a,
+  .blogDetailBody a {
+    @apply text-primary hover:underline;
+  }
+
+  .markdown_container pre,
+  .blogDetailBody pre {
+    @apply rounded-lg;
+  }
+
+  .blogDetailBody img {
+    @apply mb-5 mt-5 h-auto w-full;
+  }
+
+  .blogDetailBody ul,
+  .blogDetailBody ol {
+    list-style: none outside none;
+    padding: revert;
+    margin: revert;
+    list-style: revert;
+  }
+
+  .markdown_container iframe {
+    @apply aspect-video w-full;
+  }
+
+  .markdown_container table {
+    @apply w-full table-auto overflow-x-auto;
+  }
+  .markdown_container table tr {
+    @apply border border-gray-100 odd:bg-bg-color;
+  }
+  .markdown_container table th,
+  .markdown_container table td > * {
+    @apply text-black;
+  }
+  .markdown_container table th,
+  .markdown_container table td {
+    @apply min-w-[180px] px-3 py-4 first:min-w-[250px];
+  }
+
+  pre {
+    @apply min-h-[70px];
+  }
+
+  .prism-copy-button {
+    @apply absolute right-2 top-2 h-8 rounded-lg bg-white px-4 font-heading text-sm font-medium text-body-color shadow-fb-one duration-300 hover:text-black;
+  }
+
+  /* ========== Builder CSS =========== */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .control-label {
+    @apply mb-2.5 block text-base text-black;
+  }
+
+  .custom-control
+    input[type='checkbox']:checked
+    .custom-control-label
+    span
+    span {
+    @apply bg-primary;
+  }
+
+  .fb-builder-checkbox:checked ~ label > span {
+    @apply border-primary bg-primary;
+  }
+  .fb-builder-checkbox:checked ~ label > span > span {
+    @apply opacity-100;
+  }
+
+  .fb-builder-radio:checked ~ label > span {
+    @apply border-primary;
+  }
+  .fb-builder-radio:checked ~ label > span > span {
+    @apply opacity-100;
+  }
+
+  input[type='checkbox']:checked ~ span {
+    @apply bg-primary;
+  }
+  input[type='checkbox']:checked ~ span span {
+    @apply bg-transparent opacity-100;
+  }
+
+  .make-public:checked ~ label .slider {
+    @apply bg-primary!;
+  }
+
+  .make-public:checked ~ label .slider .dot {
+    @apply translate-x-[23px];
+  }
+
+  .react-tel-input .flag-dropdown {
+    @apply bg-transparent!;
+  }
+
+  .react-tel-input .selected-flag {
+    @apply h-full! w-[42px]!;
+  }
+  .react-datepicker-wrapper {
+    @apply w-full;
+  }
+
+  :root {
+    --primary: 87, 80, 241;
+    --black: 14, 11, 61;
+  }
+
+  .formbold-builder-preview.themeOne,
+  .formbold-builder-form.themeOne {
+    --primary: 87, 80, 241;
+    --black: 14, 11, 61;
+  }
+
+  .formbold-builder-preview.themeTwo,
+  .formbold-builder-form.themeTwo {
+    --primary: 225, 87, 138;
+    --black: 20, 6, 8;
+  }
+
+  .formbold-builder-preview.themeThree,
+  .formbold-builder-form.themeThree {
+    --primary: 57, 163, 136;
+    --black: 6, 21, 17;
+  }
+
+  .toggleSwitch input:checked ~ .box {
+    @apply bg-primary;
+  }
+  .toggleSwitch input:checked ~ .dot {
+    @apply translate-x-6 bg-white;
+  }
+
+  .select_all .icon {
+    @apply opacity-0;
+  }
+
+  .select_all input:checked ~ .icon {
+    @apply opacity-100;
+  }
+  .select_all input:checked ~ span {
+    @apply border-primary;
+  }
+
+  .box-hover {
+    @apply before:pointer-events-none before:absolute before:-left-48 before:-top-48 before:-z-10 before:h-[260px] before:w-[260px] before:translate-x-(--mouse-x) before:translate-y-(--mouse-y) before:rounded-full before:bg-[#E8E7F2] before:opacity-90 before:blur-[78px] before:transition-opacity before:duration-300 hover:before:opacity-90;
+  }
+}
+.markdown_container pre {
+  @apply relative;
+}
+
+.share_form_div select,
+.formbold-builder-form select,
+.formbold-builder-preview select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+}
+
+@media (min-width: 959px) {
+  .has-dropdown {
+    perspective: 2000px;
+  }
+  .dropdown {
+    transform-origin: 50% -30px;
+    transform: rotateX(-15deg) translateZ(0px);
+  }
+  .has-dropdown:hover .dropdown {
+    transform: none;
+  }
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+.toggleSwitch {
+  @apply flex;
+}
+
+.nextra-docs-container h2,
+.nextra-docs-container h3 {
+  @apply scroll-mt-16;
+}
+
+.nextra-docs-container h1,
+.nextra-docs-container h2,
+.nextra-docs-container h3,
+.nextra-docs-container h4,
+.nextra-docs-container h5,
+.nextra-docs-container h6,
+.nextra-docs-container strong {
+  @apply !text-black
+}
+
+.nextra-docs-container {
+  @apply !text-body-color
+}
+
+.nextra-sidebar {
+  @apply 3xl:w-[400px]
+}
+
+.nextra-sidebar ul li a {
+  @apply 3xl:!text-base !py-2 !px-3;
+}
+.nextra-sidebar div div div ul li.active > a {
+  @apply !bg-primary/10 !text-primary !font-normal;
+}
+
+.nextra-toc ul li a {
+  @apply !font-normal
+}

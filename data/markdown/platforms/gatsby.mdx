@@ -1,0 +1,165 @@
+---
+title: "Gatsby Contact Form with Free Backend API (No Code Required)"
+description: "Add a contact form to your Gatsby site with zero backend code. Use FormBold’s free API endpoint to collect form submissions instantly—example included."
+
+heading: "Contact Form for Gatsby Sites"
+subheading: "Easily create and integrate contact forms into your Gatsby site with zero backend setup. Simply use FormBold’s API endpoint to start collecting submissions instantly."
+
+ctaTitle: "Create Gatsby Contact Form with FormBold"
+ctaDescription: "Generate your free API endpoint and integrate a contact form into your Gatsby site in minutes—no backend code required."
+
+icon: "/platforms/gatsby.svg"
+---
+
+## Gatsby Contact Form with Backend API
+
+Add a fully functional contact form to your Gatsby site without writing backend code. With FormBold, simply paste your unique API endpoint into the form action attribute, and you're all set to start collecting submissions.
+
+```jsx
+import { useState } from "react";
+
+export default function Form() {
+  const [responseMessage, setResponseMessage] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const response = await fetch("https://formbold.com/s/unique_form_id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    });
+    const result = await response.json();
+
+    if (response.ok) {
+      setResponseMessage(result.message);
+      event.target.reset();
+    }
+    setResponseMessage(result.message || "Something went wrong");
+    setTimeout(() => setResponseMessage(""), 3000);
+  }
+
+  return (
+    <>
+      <div className="container">
+        <div className="form-wrapper">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Your subject"
+                required
+              />
+            </div>
+
+            <div>
+              <textarea
+                name="message"
+                id="message"
+                rows="6"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+
+            <div>
+              <p>{responseMessage}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+## See How It Works
+Setting up your Gatsby form with FormBold is quick and hassle-free—no need for complex configurations.
+
+1. **Create an Account**
+
+	Sign up for FormBold and generate a unique API endpoint URL.
+
+2. **Paste the Action URL**
+
+	Use the Gatsby form component and replace the action URL with your FormBold endpoint.
+
+3. **Start Receiving Submissions**
+
+	Form submissions will be sent to the dashboard, inbox, or connected apps like Slack or Notion.
+
+
+## Key Features of FormBold
+
+FormBold provides powerful backend features for your Gatsby forms, while keeping it simple and code-free.
+
+- **No Backend Required**
+
+	Works seamlessly with Gatsby—no server setup, scripts, or backend code needed.
+
+- **Instant Email Notifications**
+
+	Get real-time notifications for form submissions delivered straight to your inbox or connected apps.
+
+- **Spam Protection Built-In**
+
+	Server-side validation and optional Google reCAPTCHA to prevent bot submissions.
+
+- **File Upload Support**
+
+	Let users upload files, and FormBold will automatically generate secure CDN links for file downloads.
+
+- **Integrate with 5+ Apps**
+
+	Connect to Slack, Notion, Google Sheets, and more—no code required.
+
+## Frequently Asked Questions
+
+Here are answers to common questions about using FormBold with Gatsby.
+
+1. **How do I add a contact form to my Gatsby site?**
+
+	Set the action attribute of your Gatsby form to the FormBold API endpoint, and select the POST method. No JavaScript or backend needed.
+
+2. **Can I receive form submissions directly to my email?**
+
+	Yes, FormBold sends form submissions directly to your inbox or any connected third-party apps.
+
+3. **Is this secure?**
+
+	Yes, FormBold ensures all submissions are securely encrypted and transmitted over secure channels.
+
+4. **Can users upload files through my Gatsby form?**
+
+	Yes, FormBold supports file uploads and provides secure CDN links for each uploaded file.
+
+5. **Do I need any backend coding or setup?**
+
+	No backend coding is required. Simply copy the API endpoint and add it to your Gatsby form.
+
+6. **Is it free to use?**
+
+	Yes, FormBold offers a free tier that is perfect for personal websites and early-stage projects.

@@ -1,0 +1,70 @@
+---
+title: API and Tokens
+description: Creating a new tokens to get API access
+---
+
+> The base URL for the API is https://app.formbold.com
+
+## Create an API token
+
+In order to work with API, you have to use a key. You can make it on the [“API Tokens”](https://app.formbold.com/user/api-tokens) page.
+
+## Authorizing the requests
+
+Once you have the API token created, you can use it to authenticate your requests by putting it in “**Bearer authentication**”, such as following:
+
+```http
+Authorization: Bearer yourKey
+```
+
+## Submissions list
+
+```http
+GET /api/forms/formId/submissions?page=1
+```
+
+Example response:
+
+```json
+{
+    "data": [
+        {
+            "created_at": "2022-06-14T04:41:39.000000Z",
+            "fields": {
+                "email": "elon@tesla.com",
+                "message": "Test message"
+            },
+            "files": [],
+            "is_spam": false
+        },
+        {
+            "created_at": "2022-06-14T04:46:45.000000Z",
+            "fields": {
+                "email": "tim@apple.com",
+                "message": "123"
+            },
+            "files": [],
+            "is_spam": false
+        },
+        {
+            "created_at": "2022-06-14T04:48:46.000000Z",
+            "fields": {
+                "email": "mark@protonmail.com",
+                "message": "Example text"
+            },
+            "files": [],
+            "is_spam": false
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "count": 3,
+            "current_page": 1,
+            "links": {},
+            "per_page": 25,
+            "total": 3,
+            "total_pages": 1
+        }
+    }
+}
+```

@@ -1,0 +1,34 @@
+---
+title: "Attachment and Upload"
+description: How to use form upload and attachment support on FormBold
+---
+
+Here is how you can use form upload features, FYI form upload is only available for starter and business users. All you need to add an **upload field** on the form just like another text field and add **enctype="multipart/form-data"** inside the form tag.
+For now, FormBold supports 5MB maximum upload (each file) with 30 days of data retention.
+
+---
+
+### Form Code with Upload Example
+
+---
+
+```html
+<form
+  action="https://formbold.com/s/FORM_ID"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your file:
+    <input type="file" name="upload">
+  </label>
+  <button type="submit">Send</button>
+</form>
+```
+
+---
+

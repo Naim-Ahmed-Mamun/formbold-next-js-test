@@ -1,0 +1,365 @@
+<!-- Generated at: 2025-05-14T06:59:02.667Z -->
+
+---
+title: Connecting and Integrating Apps 
+description: In this part of the documentation, you'll see how you can integrate Formbold with other applications. Such as Telegram, Slack, GoogleSheets, and many more. 
+---
+
+# Connecting Apps and Integrations with Form
+
+
+
+FormBold offers a ton of app integrations. You can connect them and use them for spam protection, lead generation, and notification.
+
+Currently, FormBold offers integration for Email, Slack, Telegram, Webhook, Notion, Discord and Google Sheets.
+
+We are going to share all the processes you need to follow in order to integrate the apps.
+
+
+
+## Email
+
+Integrating web form to email is one of the core features of FormBold. You can easily connect your form with your email, this way you’ll get all the submissions straight into your inbox.
+
+To use the FormBold API first you have to create a Form then you’ll have to integrate it.
+
+Here are the steps you can follow to connect FormBold API to your static Form:
+
+Login to FormBold and create a form
+
+Then go to the Form Setting.
+
+![image](images/apps/1.png)
+
+
+
+
+3. Now go to Integrate
+
+![image](images/apps/2.png)
+
+
+
+4. Copy the Form API.
+
+![image](images/apps/3.png)
+
+
+
+6. Now add the endpoint to the action of your Form. And make sure your form method is set to POST.
+
+
+
+Save and done!
+
+Your form is now dynamic you will receive form submissions, no matter where it is hosted.
+
+
+
+## Slack
+
+You can integrate Slack with FormBold and get all the submissions in your preferred Slack channel.
+
+To get started here’s what you need:
+
+A FormBold account
+
+A FormBold form setup and
+
+A Slack account and a Slack Channel to send the submissions.
+
+
+
+Now follow these steps to integrate FormBold with your Slack channel.
+
+
+
+1. Go to Form Settings
+
+![image](images/apps/4.png)
+
+
+2. Then go to Apps
+
+![image](images/apps/5.png)
+
+
+
+3. After that click on the Slack button
+
+![image](images/apps/6.png)
+
+
+
+When you click on the Slack button you’ll see something like this:
+
+
+
+![image](images/apps/7.png)
+
+
+
+Go ahead and allow Slack permission and choose the channel you want the submissions to send.
+
+If the integration is successfully completed you’ll see something like this:
+
+![image](images/apps/8.png)
+
+
+
+Now go ahead and submit a test message on the FormBold Form. You’ll get all the submissions straight into your Slack channel.
+
+
+
+![image](images/apps/9.png)
+
+
+
+
+
+## Google Sheets
+
+Google Spreadsheet is one of the most popular Spreadsheet solutions available on the internet, it has various use cases depending on your needs. FormBold Sheet Integration allows you to store and receive website form submissions to a specific Google Sheet.
+
+Follow these steps to integrate Google Sheets with FormBold.
+
+
+
+1. Go to Form Settings.
+
+![image](images/apps/10.png)
+
+
+
+2. Then go to Apps
+
+![image](images/apps/11.png)
+
+
+
+3. After that click on the Google Sheet button.
+
+![image](images/apps/12.png)
+
+
+
+When you click on the Google Sheet button you’ll be asked to log in. After that, you’ll see the Google Sheets link like this.
+
+Click on the Go button or copy the link and go to that URL. You’ll see all the previous submissions there. And if you submit a new form the sheet will be updated automatically.
+
+![image](images/apps/13.png)
+
+
+
+## Auto Responder
+
+Sometimes you want to send an automated response email to the users after successful submission. You can set up an Auto Responder in FormBold easily.
+
+
+
+Follow these steps to integrate Auto Responder in your FormBold form.
+
+
+
+Go to the Form Settings of the form you want to add Auto Responder to:
+
+![image](images/apps/14.png)
+
+
+
+2. After that go to Apps
+
+![image](images/apps/15.png)
+
+
+
+3. And click on the Auto Responder button:
+
+![image](images/apps/16.png)
+
+
+
+4. When you click on the Auto Responder you’ll see something like this. Go ahead and fill in the fields for the auto-respond email:
+
+![image](images/apps/17.png)
+
+
+
+
+5. After you’ve filled the forms turn on the toggle buttons and make sure you enabled the Basic Spam Filter and configured Custom reCAPTCHA
+
+
+
+Once you configured Auto Responder successfully the users will get a response email after each submission.
+
+
+
+## Notion
+
+Notion is one of the most popular project management software available out there. You can integrate your FormBold form with Notion.
+
+Here are the steps you need to follow in order to integrate FormBold with Notion.
+
+
+
+1. Create A Notion Database:
+
+To integrate Notion with FormBold first, you’ll have to create a Notion Database and add the fields to it.
+
+Go ahead and create a notion database and add the fields.
+
+Here’s what it looks like for a simple Form with two fields Email and Message.
+
+You can add as many fields as you need for your Form.
+
+Note: The title of the page can be anything you want.
+
+
+
+![image](images/apps/18.png)
+
+
+
+Now that we have the Notion Database set let’s connect it with the Form.
+
+
+
+2. Connecting the Form
+
+
+
+To connect the Form follow these steps:
+
+Go to the Form Setting
+
+![image](images/apps/19.png)
+
+
+
+2. After that go to Apps
+
+![image](images/apps/20.png)
+
+
+
+3. Now go ahead and click on the Notion button.
+
+![image](images/apps/21.png)
+
+
+
+When you click on the button you’ll be redirected to a webpage that looks like this 👇
+
+![image](images/apps/22.png)
+
+
+
+Go ahead and select the page you created earlier.
+
+
+
+4. After the Database is selected you’ll be redirected to the Apps tab and you’ll see a Notion button under Connected Apps. Click on that.
+
+![image](images/apps/23.png)
+
+
+
+5. Now select the Database from the drop-down menu.
+
+![image](images/apps/24.png)
+
+
+
+5. After that, you’ll have to add the form fields from the Field Mapper.
+
+
+Note: The Form Field name is the same name as the input field of the form. The type is the type of Notion Database field type. The Notion Field name is the name of the Database field you created earlier.
+
+![image](images/apps/25.png)
+
+
+
+This is how it looks for a simple form with two input fields.
+
+![image](images/apps/26.png)
+
+
+
+Now go ahead and test it. If Notion was connected successfully you’ll see the submissions in the Database.
+
+![image](images/apps/27.png)
+
+
+
+## Telegram
+
+You can integrate Telegram with your FormBold form. This way you’ll get all the submissions in your Telegram inbox.
+
+To integrate Telegram with FormBold form follow these steps:
+
+
+
+1. Go to a specific Form Settings from your dashboard
+
+
+
+![image](images/apps/28.png)
+
+
+
+2. After that go to Apps
+
+![image](images/apps/29.png)
+
+
+
+3. Now click on the Telegram button.
+
+![image](images/apps/30.png)
+
+
+
+4. After that follow the steps to sign in to your Telegram account with your phone number. Then follow the steps to complete the integration.
+
+
+
+If the integration is done properly you’ll see something like this:
+
+![image](images/apps/31.png)
+
+Now submit the form. If everything is connected successfully you’ll get the submissions in your Telegram Inbox.
+
+
+
+![image](images/apps/32.png)
+
+
+
+## Discord
+
+Step 1: Set up integration
+In Discord, right-click the server icon, go to Server Settings > Integrations. You need server owner or integration permissions.
+
+
+
+![image](images/apps/33.png)
+
+Step 2: Create webhook
+Click "Create Webhook," choose the target channel, set the bot name to anything you can remember or FormBold
+
+
+
+Step 3: Connect webhook to Formbold
+Copy the Webhook URL from Discord. In FormBold, go to your form’s Apps tab, select the Discord Plugin, paste the webhook URL, and click "Add Plugin."
+
+
+
+![image](images/apps/34.png)
+
+
+
+Test the integration by sending a test message by submitting your form. To change the channel later, disconnect and reconnect the app with a new webhook.
+
+
+
+![image](images/apps/35.png)

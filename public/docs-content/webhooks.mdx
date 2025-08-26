@@ -1,0 +1,252 @@
+<!-- Generated at: 2025-05-14T06:59:03.479Z -->
+
+---
+title: Webhooks
+description: In this part of the documentation, you'll see how you can use the Formbold Webhooks and connect your form with other applications. 
+---
+
+# Webhooks Guide
+
+FormBold Offers Webhooks, you can use it to get all the submissions as JSON. You can use them and analyze them as you want.
+
+To be able to use the API first you’ll have to turn on the HTTP API access. 
+
+After that, you’ll have to generate the Token.
+
+
+
+## Generate Token
+
+
+
+1. Go to the Webhooks tab. You’ll see a lot of options there.
+
+![image](images/webhooks/1.png)
+
+
+
+2. After that generate the Token.
+
+To generate a token add a name and click on the Create button.
+
+![image](images/webhooks/2.png)
+
+
+
+When you click on the button it’ll generate a token for you. You can copy it by clicking the copy button
+
+![image](images/webhooks/3.png)
+
+
+
+If you want to delete the token then click on the Delete icon. It’ll remove the token, you won’t be able to access the API with that token anymore.
+
+
+
+
+
+## Get All the Submissions
+
+To send the request you need the Token and the API endpoint.
+
+We’ve generated the token above. Now we need the endpoint.
+
+
+**Here’s the base URL:**
+
+```bash copy
+https://api.formbold.com
+```
+
+
+
+**Authorization:**
+Before sending the request we will have to attach the Auth Token to the Request Header. It’s the token we generated earlier.
+
+Add that as a bearer token like this to the Request Header:
+
+
+
+```bash copy
+Authorization: Bearer YOUR_TOKEN
+```
+
+
+
+After that, you’ll have to send a request to the API. Here we are going to get all the submissions.
+
+For that, we will hit this endpoint:
+
+```bash copy
+GET /api/forms/formId/submissions?page=1&limit=2
+```
+
+
+
+To fetch all the submissions at once hit this endpoint:
+
+
+
+```bash copy
+GET /api/forms/formId/submissions?all=true
+```
+
+
+
+If the request is completed successfully you’ll receive a JSON response like this.
+
+
+
+```json copy
+{
+    "data": [
+        {
+            "created_at": "2022-06-14T04:41:39.000000Z",
+            "fields": {
+                "email": "elon@tesla.com",
+                "message": "Test message"
+            },
+            "files": [],
+            "is_spam": false
+        },
+        {
+            "created_at": "2022-06-14T04:46:45.000000Z",
+            "fields": {
+                "email": "tim@apple.com",
+                "message": "123"
+            },
+            "files": [],
+            "is_spam": false
+        },
+        {
+            "created_at": "2022-06-14T04:48:46.000000Z",
+            "fields": {
+                "email": "mark@protonmail.com",
+                "message": "Example text"
+            },
+            "files": [],
+            "is_spam": false
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "count": 3,
+            "current_page": 1,
+            "links": {},
+            "per_page": 25,
+            "total": 3,
+            "total_pages": 1
+        }
+    }
+}
+```
+
+
+
+## Using FormBold Webhooks (Zapier)
+
+
+
+Now we are going to see how to integrate Formbold Webhook with Zapier. Follow these steps to integrate Formbold Webhook with Zapier:
+
+Go to Form Setting after that go to the Apps tab and click on the Webhooks button.
+
+![image](images/webhooks/4.png)
+
+
+
+When you click on it you’ll see a pop-up like this.
+
+![image](images/webhooks/5.png)
+
+
+
+Here you have to add the Webhook response URL. To get the Webhook URL we will have to create a Zap on Zapier
+
+### Create a Zap for integration
+
+Sign in or sign up on Zapier after that click on the create zap button
+
+Here you need to select the following option to get a response in the sheet:
+
+Connect this app - Webhook by Zapier.
+
+With this One! - Google Sheet
+
+When this happens - Catch Hooks
+
+then do this- Create a Spreadsheet Row.
+
+
+
+After you selected all the options click on the Try it button
+
+![image](images/webhooks/6.png)
+
+
+
+3. After you create the Zap you’ll be redirected to this page. Go to App & Event. Now click on the Continue button.
+
+![image](images/webhooks/7.png)
+
+
+
+4. Click on the Test tab and you’ll see the Webhook URL there. Go ahead and copy it.
+
+![image](images/webhooks/8.png)
+
+
+
+5. Now click on the Test Trigger button to listen for the Webhook response. This won’t show anything right now, you’ll have to add the Webhook URL in the Formbold Webhook popup
+
+
+6. Go to Formbold and paste the Webhook URL
+
+![image](images/webhooks/9.png)
+
+
+
+7. Now go ahead and submit a form to trigger the Webhook. After a successful submission, you’ll see the data on Zapier.
+
+![image](images/webhooks/10.png)
+
+
+
+We got the data on Zapier, now we have to save the Data on Spreadsheet.
+
+8. To save the data click on the Create Spreadsheet Row in Google Sheets. It’ll open up the App & Event tab on the sidebar
+
+![image](images/webhooks/11.png)
+
+
+
+9. Make sure that in the App & Event, ensure that the 'Create Spreadsheet Row' option is selected.
+
+
+
+10. Now log in with your Google account to store the data in the Spreadsheet.
+
+![image](images/webhooks/12.png)
+
+
+
+11. Now, select the sheet where you want to store the form data.
+
+![image](images/webhooks/13.png)
+
+
+
+12. Next, map the Google Sheets columns with the Form response fields. Refresh the field button to ensure the updated columns from the Google Sheet are reflected.
+
+![image](images/webhooks/14.png)
+
+
+
+13. Then, click on the 'Continue' button to complete this step.
+
+
+
+14. Now, it's time to test. Submit a dummy response in your Form and open the Google Sheet to check the response.
+
+![image](images/webhooks/15.png)
+

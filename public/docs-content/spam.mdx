@@ -1,0 +1,153 @@
+<!-- Generated at: 2025-05-14T06:59:02.262Z -->
+
+---
+title: Spam Protection
+description: In this part of the documentation, you'll see how you can integrate Spam Protection into your Form. You'll how to turn on re-captcha and custom re-captcha to your form. 
+---
+
+# Spam Protection
+
+
+
+## Basic Spam Filter
+
+It’s an automatic spam filtering option that uses FormBold’s server-side mechanism to defend spam submissions. You can use it for basic spam filtering.
+
+
+
+To turn it on follow these steps:
+
+Go to the Form Setting:
+
+![image](images/spams/1.png)
+
+
+
+2. After that scroll down to Spam Protection and turn on the Basic Spam Filter.
+
+![image](images/spams/2.png)
+
+
+
+That’s it, this is how you can turn on the Basic Spam Filter.
+
+
+
+
+
+## Automatic reCAPTCHA
+
+It’s an automatic reCAPTCHA. It’ll automatically add one more step for verification.
+
+But when it’s enabled AJAX requests won’t work.
+
+Follow these steps to enable Automatic reCAPTCHA:
+
+Go to the Form Setting.
+
+
+
+![image](images/spams/3.png)
+
+
+
+2. After that scroll down to Spam Protection.
+
+![image](images/spams/4.png)
+
+
+
+3. Now click on the toggle button to turn on Automatic reCAPTCHA
+
+![image](images/spams/5.png)
+
+
+
+## Custom reCAPTCHA
+
+You can add Custom reCAPTCHA to your FormBold form. Unlike the Automatic reCAPTCHA, the Custom reCAPTCHA works with both AJAX and HTTP requests.
+
+You can use your own reCAPTCHA keys and you don’t need to do any more additional verifications.
+
+Follow these steps to add Custom reCAPTCHA to your Form:
+
+
+
+1. Go to the Form Setting.
+
+![image](images/spams/6.png)
+
+
+
+2. After that scroll down to Custom reCAPTCHA, and click on the toggle button to turn it on.
+
+![image](images/spams/7.png)
+
+
+
+
+After you turn it on you’ll have to provide your custom site key and private key.
+
+Let’s go ahead and generate the keys.
+
+
+3. To get the keys go to Google reCAPTCHA. After that go to v3 Admin Console
+
+
+![image](images/spams/8.png)
+
+
+
+When you go to the console you’ll see something like this. Go ahead and fill in the form and submit
+
+![image](images/spams/9.png)
+
+
+
+Make sure to choose reCAPTCHA v2 otherwise, reCAPTCHA won’t work.
+
+![image](images/spams/10.png)
+
+
+
+4. After you’ve provided all the information you’ll get the Site key and the Secret key.
+
+![image](images/spams/11.png)
+
+
+
+5. Go ahead and copy the keys, add them to the Custom reCAPTCHA setting, and click on the update button to update.
+
+![image](images/spams/12.png)
+
+
+
+6. Now you’ll have to add the reCAPTCHA div. You’ll have to add it before the submit button and load the recaptcha API file to make it work properly.
+
+
+
+Like this: 
+
+```html
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form
+  action="https://formbold.com/s/Form_ID"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+
+  <div class="g-recaptcha" data-sitekey="your recaptcha site key"></div>
+
+  <button type="submit">Send</button>
+</form>
+```
+
+

@@ -1,0 +1,121 @@
+---
+title: "Astro Contact Form with Free Backend API (Easy Setup)"
+description: "Set up an Astro contact form without any backend code. Use FormBold’s free API to manage form submissions instantly—example code included."
+
+heading: "Contact Form for Astro Websites"
+subheading: "Build and launch Astro contact forms effortlessly—no backend or JavaScript required. Use FormBold’s API endpoint to collect form submissions instantly in your static Astro projects. "
+
+ctaTitle: "Create Astro Contact Form with FormBold"
+ctaDescription: "Get your free API endpoint and start collecting form submissions in minutes—no backend required."
+
+icon: "/platforms/astro.svg"
+---
+
+## Astro Contact Form with Backend API
+
+Create fully functional contact forms in your Astro sites without writing any backend logic. With FormBold, setup is quick and seamless. Just copy your unique endpoint URL and paste it into your form's action attribute—no extra tools or servers needed
+
+```html
+<!-- contact.astro -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+  </head>
+  <body>
+    <h1>Contact Us</h1>
+    <form
+      action="https://formbold.com/s/YOUR-FORM-ID"
+      method="POST"
+      style="display: flex; flex-direction: column; max-width: 400px; gap: 1rem;"
+    >
+      <label>
+        Name:
+        <input type="text" name="name" required style="width: 100%; padding: 8px;" />
+      </label>
+
+      <label>
+        Email:
+        <input type="email" name="email" required style="width: 100%; padding: 8px;" />
+      </label>
+
+      <label>
+        Message:
+        <textarea name="message" rows="5" required style="width: 100%; padding: 8px;"></textarea>
+      </label>
+
+      <button type="submit" style="padding: 10px 20px; cursor: pointer;">
+        Send Message
+      </button>
+    </form>
+  </body>
+</html>
+```
+
+## See How It Works
+Setting up your Astro form with FormBold is straightforward and fast. No backend setup or server scripting required.
+
+1. **Create an Account**
+
+	Sign up and generate your unique API endpoint on FormBold.
+
+2. **Paste the Action URL**
+
+	Use the example HTML form and replace the action URL with your FormBold endpoint.
+
+3. **Start Receiving Submissions**
+
+	Submissions will instantly appear on your dashboard, inbox, Slack, Notion, or any other connected apps.
+
+## Key Features of FormBold
+
+FormBold delivers powerful backend functionality for your Astro forms—without the need for coding or configuration.
+
+- **No Backend Required**
+
+	Perfect for Astro’s static architecture—no server, backend, or JavaScript needed.
+
+- **Instant Email Notifications**
+
+	Receive form submissions instantly via email or integrated third-party apps.
+
+- **Spam Protection Built-In**
+
+	Includes server-side validation and Google reCAPTCHA support to block spambots.
+
+- **File Upload Support**
+
+	Let users upload files and receive auto-generated CDN download links.
+
+- **Connect to 5+ Apps**
+
+	Integrate with Slack, Notion, Google Sheets, Telegram, and more—no-code required.
+
+## Frequently Asked Questions
+
+Answers to common questions about using FormBold with Astro:
+
+1. **How do I add a contact form to an Astro website?**
+
+	Just use the FormBold endpoint in your form’s action and set the method to POST—no JavaScript or backend required.
+
+2. **Will I get form submissions in my email?**
+
+	Yes, FormBold instantly delivers submissions to your email or any connected app.
+
+3. **Is this secure?**
+
+	Absolutely. All form data is end-to-end encrypted and securely transmitted.
+
+4. **Can my Astro form support file uploads?**
+
+	Yes. Users can upload files, and FormBold provides secure CDN-hosted download links.
+
+5. **Do I need to write backend code?**
+
+	Not at all. Just copy the endpoint URL and paste it into your form’s action attribute.
+
+6. **Is FormBold free?**
+
+	Yes. FormBold offers a generous free plan ideal for personal, portfolio, and startup projects.

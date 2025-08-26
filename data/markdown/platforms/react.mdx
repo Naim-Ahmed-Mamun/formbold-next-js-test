@@ -1,0 +1,166 @@
+---
+title: "React Contact Form with Free Backend API (No Server Setup)"
+description: "Build a React contact form without writing any backend code. Use FormBold’s free API to collect submissions instantly—includes example form code to get started fast."
+
+heading: "React Contact Form for Web App"
+subheading: "Build and launch React contact forms with ease—no backend or server-side setup required. Simply use FormBold’s API endpoint to collect submissions instantly."
+
+ctaTitle: "Create React Contact Form with FormBold"
+ctaDescription: "Get your free API endpoint and start collecting form submissions in your React app—without setting up a backend."
+
+icon: "/platforms/react.svg"
+---
+
+## Contact Form in React with Backend API
+
+Create powerful contact forms in your React projects without writing any backend code. With FormBold, you can set up a fully functional React contact form in minutes. Just use the provided API endpoint in your form handler and start capturing submissions with minimal setup.
+
+```jsx
+import { useState } from "react";
+
+export default function Form() {
+  const [responseMessage, setResponseMessage] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const response = await fetch("https://formbold.com/s/unique_form_id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    });
+    const result = await response.json();
+
+    if (response.ok) {
+      setResponseMessage(result.message);
+      event.target.reset();
+    }
+    setResponseMessage(result.message || "Something went wrong");
+    setTimeout(() => setResponseMessage(""), 3000);
+  }
+  return (
+    <>
+      <div className="container">
+        <div className="form-wrapper">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Your subject"
+                required
+              />
+            </div>
+
+            <div>
+              <textarea
+                name="message"
+                id="message"
+                rows="6"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+
+            <div>
+              <p>{responseMessage}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+## See How It Works
+
+Integrating a contact form in React with FormBold is simple, fast, and requires no backend maintenance.
+
+1. **Create an Account**
+
+	Generate your unique API endpoint by creating a form on FormBold.
+
+2. **Use the Action URL**
+
+	Set up your React contact form to send a POST request to the provided endpoint.
+
+3. **Start Receiving Submissions**
+
+	Form data is instantly routed to your dashboard, email, Slack, Notion, or any connected app.
+
+
+## Key Features of FormBold
+
+FormBold empowers your React forms with backend functionality—without writing a single server-side script.
+
+- **No Backend Required**
+
+	Easily connect your React app to FormBold’s API—no Express.js, PHP, or Node.js needed.
+
+- **Instant Email Notifications**
+
+	Get real-time submission alerts delivered to your email or team tools.
+
+- **Spam Protection Built-In**
+
+	Includes backend validation and optional Google reCAPTCHA for clean submissions.
+
+- **File Upload Support**
+
+	Allow users to upload files via your React contact form—CDN-hosted links are auto-generated.
+
+- **Connect to 5+ Apps**
+
+	Easily integrate with Slack, Notion, Google Sheets, Telegram, and more—without writing custom hooks or workflows.
+
+
+## Frequently Asked Questions
+
+Here are answers to common questions about using FormBold with React contact forms.
+
+1. **How do I add a contact form in React?**
+
+	Use FormBold’s API endpoint in your form submission handler. Use fetch or axios to send a POST request—no backend required.
+
+2. **Can I receive React form submissions directly to my email?**
+
+	Yes, submissions are instantly delivered to your inbox and connected third-party apps.
+
+3. **Is FormBold secure for React apps?**
+
+	Absolutely. All form submissions are encrypted and securely processed through FormBold’s API.
+
+4. **Can React users upload files through the form?**
+
+	Yes. FormBold supports file uploads and returns a CDN link in each submission.
+
+5. **Do I need to set up a backend with Express or Node.js?**
+
+	Not at all. Just connect your React contact form to FormBold’s API, and you’re good to go.
+
+6. **Is there a free plan available?**
+
+	Yes. FormBold offers a generous free tier that’s perfect for personal and side projects built with React.

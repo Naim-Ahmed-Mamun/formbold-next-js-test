@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/s/:path*",
+      "destination": "https://api.formbold.com/s/:path*"
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "https://api.formbold.com/build/:path*"
+    }
+  ]
+}

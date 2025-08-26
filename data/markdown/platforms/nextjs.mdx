@@ -1,0 +1,164 @@
+---
+title: "Next.js Contact Form with Free Backend API (No Server Setup)"
+description: "Create a contact form in Next.js without writing any backend code. Use FormBold’s free API to collect submissions instantly—example form code included."
+
+heading: "Next.js Contact Form for Web App"
+subheading: "Build and launch high-performing contact forms in Next.js—no backend or API routes required. Just connect your form to FormBold’s API endpoint and start collecting submissions instantly."
+
+ctaTitle: "Create Next.js Contact Form with FormBold"
+ctaDescription: "Get your free API endpoint and start collecting submissions in your Nextjs app—no API routes or backend setup needed."
+
+icon: "/platforms/nextjs.svg"
+---
+
+## Next.js Contact Form with Backend API
+
+Easily add a working contact form to your Next.js project without writing a single line of backend logic. FormBold simplifies the process—just point your form’s action to a unique API endpoint and handle submissions in seconds.
+
+```jsx
+import { useState } from "react";
+
+export default function Form() {
+  const [responseMessage, setResponseMessage] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const response = await fetch("https://formbold.com/s/unique_form_id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    });
+    const result = await response.json();
+
+    if (response.ok) {
+      setResponseMessage(result.message);
+      event.target.reset();
+    }
+    setResponseMessage(result.message || "Something went wrong");
+    setTimeout(() => setResponseMessage(""), 3000);
+  }
+  return (
+    <>
+      <div className="container">
+        <div className="form-wrapper">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Your subject"
+                required
+              />
+            </div>
+
+            <div>
+              <textarea
+                name="message"
+                id="message"
+                rows="6"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+
+            <div>
+              <p>{responseMessage}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+## See How It Works
+
+Setting up a contact form in Next.js with FormBold is quick, clean, and completely backend-free.
+
+1. **Create an Account**
+
+	Sign up and generate a unique API endpoint for your form via FormBold.
+
+2. **Paste the Action URL**
+
+	Use FormBold’s example code and set the form action to your unique endpoint.
+
+3. **Start Receiving Submissions**
+
+	All form submissions are securely sent to the dashboard, inbox, Slack, Notion, or other connected apps.
+
+## Key Features of FormBold
+
+FormBold brings seamless backend functionality to your Next.js contact form—without setting up API routes or serverless functions.
+
+- **No Backend or API Routes Needed**
+
+	Use FormBold’s endpoint directly in your form—skip pages/api/ entirely.
+
+- **Instant Email Notifications**
+
+	Get real-time notifications via email or connected team tools like Slack and Telegram.
+
+- **Spam Filtering & Validation**
+
+	Includes server-side validation and optional Google reCAPTCHA to block spam.
+
+- **File Upload Support**
+
+	Allow users to upload files through your form with secure, CDN-hosted download links.
+
+- **Connect to 5+ Apps**
+
+	Sync with Notion, Google Sheets, Telegram, and more—no custom integrations required.
+
+## Frequently Asked Questions
+
+Answers to common questions about using FormBold with a Next.js contact form.
+
+1. **How do I add a contact form in Next.js?**
+
+	Use FormBold’s API endpoint as the form action and set the method to POST. No need to create an API route.
+
+2. **Can I get form submissions via email?**
+
+	Yes, all submissions are delivered instantly to your inbox and any connected third-party tools.
+
+3. **Is the contact form secure in Next.js?**
+
+	Definitely. All data is encrypted and handled securely through FormBold’s API.
+
+4. **Can I enable file uploads in Next.js forms?**
+
+	Yes. File uploads are fully supported, and a download link is included in each submission.
+
+5. **Do I need to configure API routes or serverless functions?**
+
+	No. FormBold handles everything on the backend—you only need to connect the endpoint.
+
+6. **Is there a free version?**
+
+	Yes. FormBold’s free tier is perfect for small projects, MVPs, and personal Next.js websites.

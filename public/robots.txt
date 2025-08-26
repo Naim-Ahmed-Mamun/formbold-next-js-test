@@ -1,0 +1,25 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /account
+
+# *
+User-agent: *
+Disallow: /account/*
+
+# *
+User-agent: *
+Disallow: /share
+
+# *
+User-agent: *
+Disallow: /share/*
+
+# Host
+Host: https://formbold.com
+
+# Sitemaps
+Sitemap: https://formbold.com/sitemap.xml

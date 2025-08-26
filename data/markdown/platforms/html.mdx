@@ -1,0 +1,239 @@
+---
+title: "HTML Contact Form with Free Backend API (with example)"
+description: "Create a simple HTML contact form with no backend code. Use FormBold’s free API to collect submissions
+instantly—includes example form code."
+
+heading: Contact Form for HTML Websites
+subheading: "Build and launch HTML contact forms with ease—no backend or JavaScript needed. Simply use FormBold’s
+API endpoint to collect submissions instantly."
+
+ctaTitle: "Create HTML Contact Form with FormBold"
+ctaDescription: "Get your free API endpoint and start collecting form submissions in minutes—no backend required."
+
+icon: "/platforms/html.svg"
+---
+
+## HTML Contact Form with Backend API
+
+Create functional contact forms for your static HTML sites without writing a single line of backend code. Setting up an HTML contact form with FormBold takes just a few steps. You only need to paste your unique endpoint URL into the action attribute of your form, and you're ready to go.
+
+```html
+<div class="formbold-main-wrapper">
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+  <div class="formbold-form-wrapper">
+    <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <div class="formbold-mb-5">
+        <label for="name" class="formbold-form-label"> Full Name </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Full Name"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-5">
+        <label for="email" class="formbold-form-label"> Email Address </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-5">
+        <label for="subject" class="formbold-form-label"> Subject </label>
+        <input
+          type="text"
+          name="subject"
+          id="subject"
+          placeholder="Enter your subject"
+          class="formbold-form-input"
+        />
+      </div>
+
+      <div class="formbold-mb-5">
+        <label for="message" class="formbold-form-label"> Message </label>
+        <textarea
+          rows="6"
+          name="message"
+          id="message"
+          placeholder="Type your message"
+          class="formbold-form-input"
+        ></textarea>
+      </div>
+
+      <div>
+        <button class="formbold-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Inter", sans-serif;
+  }
+  .formbold-mb-5 {
+    margin-bottom: 20px;
+  }
+  .formbold-pt-3 {
+    padding-top: 12px;
+  }
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+    background: white;
+  }
+  .formbold-form-label {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074d;
+    margin-bottom: 12px;
+  }
+  .formbold-form-label-2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .formbold-form-input {
+    width: 100%;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    font-weight: 500;
+    font-size: 16px;
+    color: #6b7280;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold-btn {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 6px;
+    padding: 14px 32px;
+    border: none;
+    font-weight: 600;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold--mx-3 {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+  .formbold-px-3 {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .flex {
+    display: flex;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .w-full {
+    width: 100%;
+  }
+  @media (min-width: 540px) {
+    .sm\:w-half {
+      width: 50%;
+    }
+  }
+</style>
+```
+
+## See How It Works
+Setting up your HTML form with FormBold is fast and hassle-free. No complex configuration or backend setup required.
+
+1. **Create an Account**
+
+	Generate a unique endpoint URL by creating your form on FormBold.
+
+2. **Paste the Action URL**
+
+	Use the example form code and replace the action URL with your endpoint.
+
+3. **Start Receiving Submissions**
+
+	Submissions will be sent directly to your dashboard, inbox, Slack, Notion, or any connected app.
+
+## Key Features of FormBold
+
+FormBold offers robust backend capabilities and smart features, while keeping things incredibly simple.
+
+- **No Backend Required**
+
+	Works seamlessly with static sites—while keeping things incredibly simple.
+
+- **Instant Email Notifications**
+
+	Get form submissions delivered straight to your inbox or messaging apps.
+
+- **Spam Protection Built-In**
+
+	Server-side validation and optional Google reCAPTCHA keeps bots out.
+
+- **File Upload Support**
+
+	Let users attach files with auto-generated CDN links included.
+
+- **Connect to 5+ Apps**
+
+	Integrate with Slack, Notion, Sheets, Telegram, and more—no code required.
+
+## Frequently Asked Questions
+
+Here are answers to common questions about using FormBold on HTML websites.
+
+1. **How do I add a contact form to a plain HTML website?**
+
+	Use FormBold’s API endpoint as your form action and set the method to POST. No JavaScript or backend required.
+
+2. **Can I receive form submissions directly to my email?**
+
+	Yes, submissions are instantly delivered to your inbox and any connected third-party apps.
+
+3. **Is this secure? Are submissions encrypted?**
+
+	Absolutely. All submissions are end-to-end encrypted and handled over secure channels.
+
+4. **Can users upload files through the HTML form?**
+
+	Yes. FormBold supports file uploads and provides a CDN-hosted download link with each submission.
+
+5. **Do I need to write any backend code?**
+
+	No backend coding is required—just copy the endpoint and drop it into your form.
+
+6. **Is it free to use?**
+
+	Yes. FormBold offers a generous free tier suitable for personal, hobby, and early-stage projects.

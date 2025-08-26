@@ -1,0 +1,154 @@
+---
+title: "Vue Contact Form with Free Backend API (No Server Required)"
+description: "Create a contact form in Vue.js without writing any backend code. Use FormBold’s free API to collect and manage submissions—example code included."
+
+heading: "Vue Contact Form for Static Websites"
+subheading: "Create and launch Vue contact forms without any backend setup or JavaScript libraries. Just connect to FormBold’s API endpoint and start receiving submissions instantly."
+
+ctaTitle: "Create Vue.js Contact Form with FormBold"
+ctaDescription: "Get your free API endpoint and start collecting submissions in your Vue.js project—no backend required."
+
+icon: "/platforms/vue.svg"
+---
+
+## Vue.js Contact Form with Backend API
+
+Easily add a fully functional contact form to your Vue.js project without writing any backend code. FormBold makes it effortless—just insert your unique API endpoint into the form action, and you’re good to go.
+
+```html
+<template>
+  <form @submit.prevent="submitForm">
+    <div>
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        v-model="email"
+        required
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        placeholder="Subject"
+        name="subject"
+        v-model="subject"
+        required
+      />
+    </div>
+
+    <div>
+      <textarea
+        name="message"
+        rows="6"
+        placeholder="Type your message"
+        v-model="message"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit">Send Message</button>
+  </form>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        email: "",
+        subject: "",
+        message: "",
+      };
+    },
+    methods: {
+      async submitForm() {
+        const response = await fetch("https://formbold.com/s/unique_form_id", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: this.email,
+            subject: this.subject,
+            message: this.message,
+          }),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert(result.message);
+          this.$el.reset();
+        } else {
+          alert(response.message || "Something went wrong");
+        }
+      },
+    },
+  };
+</script>
+```
+
+## See How It Works
+Setting up your Vue contact form with FormBold is straightforward and backend-free.
+
+1. **Create an Account**
+
+	Sign up on FormBold and generate your unique API endpoint.
+
+2. **Paste the Action URL**
+
+	Use the example form code in your Vue component and replace the form action with your unique endpoint.
+
+3. **Start Receiving Submissions**
+
+	Submissions are securely sent to your FormBold dashboard, inbox, or connected apps like Slack and Notion.
+
+## Key Features of FormBold
+Get powerful backend features with minimal effort—ideal for Vue.js single-page apps and static sites.
+
+- **No Backend Setup Needed**
+
+	Skip Node.js servers or Firebase functions. Just connect to FormBold’s hosted API endpoint.
+
+- **Instant Email Alerts**
+
+	Receive form submissions instantly via email or tools like Slack, Telegram, or Google Sheets.
+
+- **Spam Protection Included**
+
+	Includes built-in server-side validation and optional Google reCAPTCHA for extra security.
+
+- **File Upload Support**
+
+	Allow users to attach files, automatically delivered with CDN-hosted download links.
+
+- **Integrate with 5+ Apps**
+
+	Easily connect your Vue contact form to Notion, Sheets, Slack, Telegram, and more—no code required.
+
+## Frequently Asked Questions
+
+Common questions about adding a contact form to Vue.js with FormBold.
+
+1. **How do I add a contact form in Vue.js?**
+
+	Just set the action attribute to your FormBold API endpoint and use method="POST". No extra packages or backend required.
+
+2. **Can I get form submissions via email?**
+
+	Yes. FormBold instantly delivers submissions to your inbox and any connected apps.
+
+3. **Is it secure? Are form submissions encrypted?**
+
+	Absolutely. All data is end-to-end encrypted and securely transmitted.
+
+4. **Can I allow file uploads in Vue contact forms?**
+
+	Yes. Users can upload files, and FormBold generates a secure CDN link for each file.
+
+5. **Do I need any backend code or plugins?**
+
+	No backend or plugins needed—FormBold handles everything through its hosted API.
+
+6. **Is FormBold free to use?**
+
+	Yes. The free tier works great for small Vue projects, portfolios, and MVPs.

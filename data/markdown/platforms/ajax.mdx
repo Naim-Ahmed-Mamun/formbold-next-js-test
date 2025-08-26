@@ -1,0 +1,163 @@
+---
+title: "Ajax Contact Form with Free Backend API (Instant Submissions)"
+description: "Build an Ajax-powered contact form without server setup. Use FormBold’s free API for instant form submissions—includes example code."
+
+heading: "Ajax-powered Contact Form"
+subheading: "Effortlessly integrate Ajax-powered contact forms into your website. No page reloads required, just smooth and instant submissions powered by FormBold’s API endpoint."
+
+ctaTitle: "Create Ajax Contact Form with FormBold"
+ctaDescription: "Skip the hassle of backend coding. Get your free API endpoint and integrate a powerful Ajax contact form in minutes."
+
+icon: "/platforms/javascript.svg"
+---
+
+## Ajax Contact Form with Backend API
+
+Set up a functional Ajax contact form on your site with zero backend code. Simply embed the unique FormBold API endpoint into your Ajax form, and you're ready to start collecting form submissions instantly.
+
+```html
+<form id="form">
+  <div>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Your Email"
+      required
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="subject"
+      id="subject"
+      placeholder="Your subject"
+      required
+    />
+  </div>
+
+  <div>
+    <textarea
+      name="message"
+      id="message"
+      rows="6"
+      placeholder="Your Message"
+      required
+    ></textarea>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector("form");
+  const result = document.createElement("p");
+  form.appendChild(result);
+
+  form.addEventListener("submit", function (e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+
+    var object = {};
+    formData.forEach((value, key) => {
+      object[key] = value;
+    });
+    var json = JSON.stringify(object);
+
+    fetch("https://formbold.com/s/unique_form_id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        result.innerHTML = json.message;
+        result.style.color = "green";
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 5000);
+      });
+  });
+</script>
+```
+
+## How It Works
+
+Setting up an Ajax-powered form with FormBold is fast and simple. No complex configurations or backend setups are needed.
+
+1. **Create an Account**
+
+	Generate your unique API endpoint URL by signing up for FormBold.
+
+2. **Embed the Action URL**
+
+	In your Ajax form, replace the action URL with your FormBold endpoint.
+
+3. **Start Receiving Submissions**
+
+	All form submissions will be delivered directly to the dashboard, email, inbox, or any connected apps.
+
+## Key Features of FormBold
+
+FormBold enables your Ajax-powered forms with advanced backend capabilities while keeping the process code-free and simple.
+
+- **No Backend Required**
+
+	Works perfectly with Ajax forms—no server setup, scripting, or backend code required.
+
+- **Instant Email Notifications**
+
+	Get form submissions sent instantly to your inbox or connected apps.
+
+- **Spam Protection Built-In**
+
+	Google reCAPTCHA and server-side validation help protect your form from bots and spam.
+
+- **File Upload Support**
+
+	Allow users to upload files, and FormBold will provide secure CDN links for every uploaded file.
+
+- **Connect to 5+ Apps**
+
+	Seamlessly integrate with apps like Slack, Notion, Sheets, Telegram, and more—no coding required.
+
+## Frequently Asked Questions
+
+Here are answers to common questions about using FormBold with Ajax-powered contact forms.
+
+1. **How do I add a contact form with Ajax?**
+
+	Simply use the FormBold API endpoint in your Ajax form's action attribute. Set the method to POST, and you're ready to go!
+
+2. **Can I receive form submission directly to my email?**
+
+	Yes, submissions are delivered instantly to your inbox, as well as any connected third-party apps you choose.
+
+3. **Is this secure?**
+
+	Yes, FormBold ensures that all form submissions are encrypted and securely handled.
+
+4. **Can users upload files through the Ajax contact form?**
+
+	Yes, FormBold supports file uploads and provides secure CDN links for reach uploaded file.
+
+5. **Do I need to write backend code?**
+
+	No, you don't need any backend code. Just paste the FormBold API endpoint into your Ajax form, and you're all set.
+
+6. **Is it free to use?**
+
+	Yes, FormBold offers a free tier suitable for personal and small-scale projects.

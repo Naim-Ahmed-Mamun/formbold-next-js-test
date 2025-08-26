@@ -1,0 +1,230 @@
+---
+title: Code Examples
+description: Ready to Use Code Examples and Implementations of FormBold with Different Language Frameworks and Libraries.
+---
+
+
+Ready to Use Code Examples and Implementations of FormBold with Different Language Frameworks and Libraries. FormBold provides free form API that works with all frameworks, libraries, and platforms. These code examples will help you to get started easily and to understand code structure in action.
+
+___
+
+### Plain HTML
+
+Simple FormBold code example on a plain HTML file
+
+```html
+<form action="https://formbold.com/s/FORM_ID" method="POST">
+  <input type="email" placeholder="Email" name="email" />
+  <input type="text" placeholder="Subject" name="subject" />
+  <textarea name="message" placeholder="Type your message"></textarea>
+
+<button type="submit">Send Message</button>
+</form>
+```
+___
+
+### Plain HTML with reCAPTCHA
+
+Simple FormBold code example on a plain HTML file
+
+```html
+
+// Loading reCAPTCHA script
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<form action="https://formbold.com/s/FORM_ID" method="POST">
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  // Insert reCAPTCHA site key here
+  <div class="g-recaptcha" data-sitekey="your recaptcha site key"></div>
+  <button type="submit">Send</button>
+</form>
+```
+
+___
+
+### React / Next.js (axios)
+
+This example code will work in same way with NextJS and Gatsby
+
+```js
+import axios from "axios";
+import React, { useState } from "react";
+export default function Forms() {
+  // Input Change Handling
+  const [inputs, setInputs] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const handleOnChange = (event) => {
+    event.persist();
+    setInputs((prev) => ({
+      ...prev,
+      [event.target.id]: event.target.value,
+    }));
+  };
+
+  // Server State Handling
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+
+    axios({
+      method: "POST",
+      url: "https://formbold.com/s/FORM_ID",
+      data: inputs,
+    })
+      .then((r) => {
+        console.log("hello");
+      })
+      .catch((r) => {
+        console.log("error");
+      });
+  };
+
+  return (
+    <form onSubmit={handleOnSubmit}>
+      <input
+        onChange={handleOnChange}
+        value={inputs.email}
+        id="email"
+        type="email"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        onChange={handleOnChange}
+        value={inputs.subject}
+        id="subject"
+        type="text"
+        name="subject"
+        placeholder="Subject"
+      />
+      <textarea
+        onChange={handleOnChange}
+        value={inputs.message}
+        id="message"
+        name="message"
+        placeholder="Type your message"
+      />
+      <button type="submit"> Send Message </button>
+    </form>
+  );
+}
+```
+___
+
+___
+
+### React / Next.js (axios) with reCAPTCHA
+
+This example code will work in same way with NextJS and Gatsby, for reCAPTCHA first of all you must install the dependency by this command:
+
+```html
+npm install react-google-recaptcha
+```
+
+```js
+import React, { useState } from "react";
+import axios from "axios";
+// Install dependency - npm install react-google-recaptcha
+import ReCAPTCHA from "react-google-recaptcha";
+
+export default function Forms() {
+    const recaptchaRef = React.createRef();
+
+    // Input Change Handling
+  const [inputs, setInputs] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const handleOnChange = (event) => {
+    event.persist();
+    setInputs((prev) => ({
+      ...prev,
+      [event.target.id]: event.target.value,
+    }));
+  };
+
+  // Server State Handling
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+
+    axios({
+      method: "POST",
+      url: "https://formbold.com/s/FORM_ID",
+      data: {...inputs, 'g-recaptcha-response': recaptchaRef.current.getValue()},
+    })
+      .then((r) => {
+        console.log("hello");
+      })
+      .catch((r) => {
+        console.log("error");
+      });
+  };
+
+  return (
+    <form onSubmit={handleOnSubmit}>
+      <input
+        onChange={handleOnChange}
+        value={inputs.email}
+        id="email"
+        type="email"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        onChange={handleOnChange}
+        value={inputs.subject}
+        id="subject"
+        type="text"
+        name="subject"
+        placeholder="Subject"
+      />
+      <textarea
+        onChange={handleOnChange}
+        value={inputs.message}
+        id="message"
+        name="message"
+        placeholder="Type your message"
+      />
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        // Insert reCAPTCHA site key here
+        sitekey="your recaptcha site key"
+      />
+      <button type="submit"> Send Message </button>
+    </form>
+  );
+}
+```
+___
+
+
+### VueJS
+
+Simple FormBold code example in VueJS
+
+```html
+<template>
+  <form action="https://formbold.com/s/FORM_ID" method="POST">
+    <input type="email" placeholder="Email" name="email" />
+    <input type="text" placeholder="Subject" name="subject" />
+    <textarea name="message" placeholder="Type your message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</template>
+```
+
++ 🙌 If you would to add more examples, feel free to [open a pull request on our repo](https://github.com/FormBold/examples) , we will add your example on our site too.
+
++ ⚡ If you are looking for ready to use form templates, check out [HTML and Tailwind Form Templates from here](https://formbold.com/templates)

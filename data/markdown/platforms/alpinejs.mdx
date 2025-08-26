@@ -1,0 +1,159 @@
+---
+title: "Alpine.js Contact Form with Free Backend API (Instant Submissions)"
+description: "Set up an Alpine.js contact form without backend coding. Use FormBold’s free API to handle form submissions instantly—includes example form code."
+
+heading: Contact From for Alpine.js Sites
+subheading: "Quickly create and integrate a contact form into your Alpine.js site with no backend required. Use FormBold’s API endpoint to collect form submissions instantly."
+
+ctaTitle: "Create Alpine.js Contact Form with FormBold"
+ctaDescription: "Generate your free API endpoint and integrate a contact form into your Alpine.js site in just a few minutes—no backend required."
+
+icon: "/platforms/alpinejs.svg"
+---
+
+## Alpine.js Contact Form with Backend API
+
+Set up a fully functional contact form for your Alpine.js site without writing backend code. Simply paste your unique API endpoint into the action attribute of your Alpine.js form, and you're ready to start collecting submissions.
+
+```html
+<form x-data="contactForm()" @submit.prevent="submit">
+  <div>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Your Email"
+      required
+    />
+  </div>
+
+  <div>
+    <input
+      type="text"
+      name="subject"
+      id="subject"
+      placeholder="Your subject"
+      required
+    />
+  </div>
+
+  <div>
+    <textarea
+      name="message"
+      id="message"
+      rows="6"
+      placeholder="Your Message"
+      required
+    ></textarea>
+  </div>
+
+  <div>
+    <button type="submit" :disabled="loading">Submit</button>
+  </div>
+
+  <div x-text="status"></div>
+</form>
+
+<script>
+  function contactForm() {
+    return {
+      loading: false,
+      status: "",
+      async submit(event) {
+        let formData = new FormData(event.target);
+        let object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        this.loading = true;
+
+        const response = await fetch("https://formbold.com/s/p9RXo", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        });
+        const result = await response.json();
+
+        if (response.ok) {
+          this.status = result.message || "Success";
+          event.target.reset();
+        }
+        this.status = result.message || "Something went wrong";
+        this.loading = false;
+        setTimeout(() => (this.status = ""), 3000);
+      },
+    };
+  }
+</script>
+```
+
+## See How It Works
+
+Integrating a contact form with Alpine.js and FormBold is simple and fast—no complex setup required.
+
+1. **Create an Account**
+
+	Sign up for FormBold to generte your unique API endpint URl.
+
+2. **Paste the Action URL**
+
+	In your Alpine.js form, replace the action URL with the FormBold API endpoint.
+
+3. **Start Receiving Submissions**
+
+	Submissions will be sent directly to your FormBold dashboard, inbox, or connected apps.
+
+## Key Features of FormBold
+
+FormBold gives your Alpine.js forms powerful backend capabilities while keeping everything simple and code-free.
+
+- **No Backend Required**
+
+	Works effortlessly with Alpine.js—no server etup or backend code required.
+
+- **Instant Email Notifications**
+
+	Receive form submissions instantly via email or any connected app.
+
+- **Spam Protection Built-in**
+
+	Google reCAPTCHA and server-side validation to block bot submissions.
+
+- **File Upload Support**
+
+	Enable file uploads in your forms with secure CDN lins automatically generated for each submission.
+
+- **Connect to 5+ Apps**
+
+	Integrate with Slack, Notion, Sheets, Telegram, and more—no coding required.
+
+
+## Frequently Asked Questions
+
+Here are answers to common questions about using FormBold with Alpine.js
+
+1. **How do I add a contact form to my Alpine.js site?**
+
+	Simply use FormBold's API endpoint in the action attribute of your Alpine.js form. Set the method to POST, and you're good to go.
+
+2. **Can I receive form submissions directly to my email?**
+
+	Yes, FormBold delivers form submissions instantly to your inbox and any connected third-party apps.
+
+3. **Is this secure?**
+
+	Absolutely. All form submissions are encrypted and transmitted over secure channels to ensure privacy.
+
+4. **Can users upload files through my Alpine.js form?**
+
+	Yes, FormBold support file uploads and provides secure CDN links for reach uploaded file.
+
+5. **Do I need to write backend code?**
+
+	No, you don't need to write any backend code. Simply paste the FormBold API endpoint into your Alpine.js form.
+
+6. **Is it free to use?**
+
+	Yes, FormBold offers a generous free tier suitable for personal websites and early-stage projects.

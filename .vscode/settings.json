@@ -1,0 +1,4 @@
+{
+  "css.validate": false,
+  "i18n-ally.localesPaths": ["lib/builder/language-provider/locales"]
+}

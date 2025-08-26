@@ -1,0 +1,20 @@
+export const FORGOT_PASSWORD_REQUEST = "FORGOT_PASSWORD_REQUEST";
+export const FORGOT_PASSWORD_REQUEST_SUCCESS = "FORGOT_PASSWORD_REQUEST_SUCCESS";
+export const FORGOT_PASSWORD_REQUEST_FAILURE = "FORGOT_PASSWORD_REQUEST_FAILURE";
+
+export const RESET_FORGOT_PASSWORD_REQUEST_SUCCESS = "RESET_FORGOT_PASSWORD_REQUEST_SUCCESS";
+
+export const SHOW_FORGOT_PASS_MODAL = "SHOW_FORGOT_PASS_MODAL";
+export const CLOSE_FORGOT_PASS_MODAL = "CLOSE_FORGOT_PASS_MODAL";
+
+export function requestForgotPassword(payload) {
+  return {
+    type: FORGOT_PASSWORD_REQUEST,
+    payload,
+  };
+}
+export function resetForgetPasswordRequestSuccess() {
+  return {
+    type: RESET_FORGOT_PASSWORD_REQUEST_SUCCESS,
+  };
+}
