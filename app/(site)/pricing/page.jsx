@@ -1,6 +1,6 @@
 import { siteURL } from "../../../services/config"
 import PricingMain from "./_components/PricingMain";
-import {getPricingPageData} from "../../../api/pricing";
+import {getPricingPageData} from "../../../fetch-api/pricing";
 
 export const metadata = {
   title:"Pricing | FormBold",
