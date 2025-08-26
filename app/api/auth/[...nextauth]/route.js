@@ -77,9 +77,9 @@ const handler = NextAuth({
             clientSecret: config.githubClientSecret,
         }),
     ],
-    secret: process.env.JWT_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: `${process.env.NEXTAPP_URL}/auth/login`,
+        signIn: `/auth/login`,
     },
     callbacks: {
         async jwt({ token, user, account }) {
