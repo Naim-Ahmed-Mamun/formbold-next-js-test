@@ -1,13 +1,13 @@
 import { isEmpty } from "lodash";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUserApiTokens, revokeUserApiToken } from "../../../actions/Webhooks";
 import CopyButton from "../CopyButton";
 
-const TokenListCard = () => {
+const TokenListCard = ({tokens}) => {
   const dispatch = useDispatch();
-  const webhooks = useSelector((state) => state.webhooks);
-  const loading = webhooks?.loading;
+  // const webhooks = useSelector((state) => state.webhooks);
+  // const loading = webhooks?.loading;
 
   useEffect(() => {
     dispatch(getUserApiTokens());
@@ -22,7 +22,7 @@ const TokenListCard = () => {
   return (
     <div className="rounded-[10px] bg-white p-6 shadow-fb-one sm:p-10 xl:p-8 2xl:p-10">
       <h3 className="mb-2 font-heading text-[22px] font-bold text-black">List of active tokens</h3>
-      {webhooks.tokens && !isEmpty(webhooks.tokens) ? (
+      {tokens && !isEmpty(tokens) ? (
         <table className="w-full table-auto">
           <thead>
             <tr className="rounded-t-[10px] border-b border-fb-stroke">
@@ -33,7 +33,7 @@ const TokenListCard = () => {
             </tr>
           </thead>
           <tbody>
-            {webhooks.tokens.map((token, index) => (
+            {tokens.map((token, index) => (
               <tr key={index} className="border-b border-stroke last-of-type:border-b-0">
                 <td className="p-5 text-sm text-black">{token.name}</td>
                 <td className="p-5 text-sm text-black">

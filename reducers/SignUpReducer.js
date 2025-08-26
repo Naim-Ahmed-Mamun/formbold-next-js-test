@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { REGISTER, REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_VALIDATION_FAILED, RESET_REGISTER_VALIDATION_ERROR } from "../actions/SignUpActions";
+import Cookies from "js-cookie";
 
 const initialState = {
   register: false,
@@ -21,6 +22,7 @@ export default function signUp(state = initialState, action) {
       };
     case REGISTER_FAILURE:
       localStorage.removeItem("access_token");
+      Cookies.remove("access_token");
       toast.error(action.message);
       return { ...state, register: undefined, validationError: [] };
 

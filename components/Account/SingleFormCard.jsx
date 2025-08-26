@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import moment from "moment";

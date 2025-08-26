@@ -1,5 +1,6 @@
 import { siteURL } from "../../../../services/config";
 import WebhooksArea from "../_components/WebhooksArea";
+import {getUserApiTokensData} from "../../../../api/webhook";
 
 export const metadata = {
   title: "Webhooks | Formbold",
@@ -8,8 +9,9 @@ export const metadata = {
   },
 };
 
-export default function WebhooksPage() {
+export default async function WebhooksPage() {
+  const tokens = await getUserApiTokensData();
   return (
-    <WebhooksArea />
+    <WebhooksArea tokens={tokens?.data?.tokens || []} />
   )
 }

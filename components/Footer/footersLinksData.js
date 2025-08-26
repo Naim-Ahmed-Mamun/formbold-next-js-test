@@ -28,8 +28,8 @@ export const productsData = [
   },
   {
     id: uniqueId(),
-    title: "FormBold",
-    link: "https://formbold.com?ref=formbold",
+    title: "Meku",
+    link: "https://meku.dev/?ref=formbold",
     newTab: true,
   },
   {

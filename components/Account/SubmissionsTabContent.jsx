@@ -12,14 +12,14 @@ import SubmissionsEmptyState from "./SubmissionsEmptyState";
 import SubmissionsPagination from "./SubmissionsPagination";
 import SubmissionsTabBar from "./SubmissionsTabBar";
 
-const SubmissionsTabContent = () => {
+const SubmissionsTabContent = ({submissionData}) => {
+  const staticsData = submissionData?.statistics || {};
+  const filtered_submissions = submissionData?.submissions?.data || [];
   const dispatch = useDispatch();
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const currentForm = useSelector((state) => state.forms?.currentForm);
-  const userInfo = useSelector((state) => state.auth?.signIn?.userInfo);
-  const pageLoading = useSelector((state) => state.forms?.pageLoading);
   const submissionsData = useSelector((state) => state.forms?.submissions);
   const hasSubscription = useSelector((state) => state.auth?.hasSubscription);
 
@@ -44,37 +44,6 @@ const SubmissionsTabContent = () => {
     currentPage: 1,
     lastPage: 1,
   });
-
-  // useEffect(() => {
-  //   if (currentForm) {
-  //     // Update query params
-  //     const { id, tab } = router.query;
-  //     const filterQuery = Object.keys(filters).filter((key) => filters[key]);
-  //     let hasSpam = filterQuery.includes("spam");
-
-  //     let finalSearchParams = {
-  //       ...router.query,
-  //       ...filters,
-  //     };
-  //     const urlSearchParams = makeQueryParams(finalSearchParams, hasSpam);
-
-  //     router.push(
-  //       {
-  //         pathname: router.pathname,
-  //         query: { ...urlSearchParams, id: encodeURIComponent(id), tab },
-  //       },
-  //       undefined,
-  //       { scroll: false }
-  //     );
-  //     // Call API
-  //     const payload = {
-  //       id: currentForm?.id,
-  //       filters: urlSearchParams,
-  //     };
-  //     dispatch(getFormSubmissions(payload));
-  //   }
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [filters]);
 
   useEffect(() => {
     if (currentForm) {
@@ -171,8 +140,8 @@ const SubmissionsTabContent = () => {
   return (
     <>
       <FormSubmissionsGraphCard
-        items={submissionsStatistics.items}
-        categories={submissionsStatistics.categories}
+        items={staticsData?.items}
+        categories={staticsData?.categories}
       />
       <SubmissionsTabBar filters={filters} setFilters={setFilters} />
       {submissionsData?.loading ? (
@@ -206,15 +175,15 @@ const SubmissionsTabContent = () => {
         </div>
       )}
       {hasSubscription &&
-        !isEmpty(filteredSubmissions) &&
-        filteredSubmissions.length > 0 && (
+        !isEmpty(filtered_submissions) &&
+        filtered_submissions.length > 0 && (
           <SubmissionsPagination
             handelPerPageChange={handelPerPageChange}
             pagination={pagination}
             handelPageChange={handelPageChange}
           />
-        )}
-      {isEmpty(filteredSubmissions) && <SubmissionsEmptyState />}
+      )}
+      {isEmpty(filtered_submissions) && <SubmissionsEmptyState />}
       <PaywallModal
         modalOpen={showPaywallModal}
         setModalOpen={setShowPaywallModal}

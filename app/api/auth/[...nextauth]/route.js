@@ -6,10 +6,6 @@ import axios from "axios";
 import appConfig from "../../../../config/index";
 import config from "../../../../services/config";
 
-// Ensure this route runs on the Node.js runtime and is always dynamic.
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
@@ -81,11 +77,9 @@ const handler = NextAuth({
             clientSecret: config.githubClientSecret,
         }),
     ],
-    // NextAuth expects NEXTAUTH_SECRET in production
-    secret: process.env.NEXTAUTH_SECRET || process.env.JWT_SECRET,
+    secret: process.env.JWT_SECRET,
     pages: {
-        // Use a relative path to avoid relying on env at build/deploy
-        signIn: "/auth/login",
+        signIn: `${process.env.NEXTAPP_URL}/auth/login`,
     },
     callbacks: {
         async jwt({ token, user, account }) {

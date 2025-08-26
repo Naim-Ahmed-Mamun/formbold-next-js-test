@@ -1,4 +1,4 @@
-<!-- Generated at: 2025-05-14T06:59:02.667Z -->
+<!-- Generated at: 2025-08-25T08:44:41.790Z -->
 
 ---
 title: Connecting and Integrating Apps 
@@ -363,3 +363,302 @@ Test the integration by sending a test message by submitting your form. To chang
 
 
 ![image](images/apps/35.png)
+
+
+## Mailchimp
+
+Connect your FormBold form to Mailchimp to automatically sync form submissions with the Mailchimp audience.
+
+Follow these steps:
+
+**Step 1**: First, log in to your Mailchimp account. Once you’re in:
+
+- Go to the Audience section from the left sidebar.
+
+- Click **Audience dashboard** to view and manage form fields.
+
+![image](images/apps/36.png)
+
+**Step 2**: Create an API Key
+
+- Click your profile icon (bottom left) → **Account → Extras → API Keys**
+
+- Create a new key if needed and copy it for later.
+
+![image](images/apps/37.png)
+
+**Step 3**. Configure Audience Fields
+
+Update your Mailchimp fields to match your form.
+
+- **Delete old field**s: Click the three-dot menu next to each row and remove existing fields.
+
+- Add these fields:
+
+    - **Email Address**: Type – Email, Merge tag – `*|EMAIL|*` or `*|MERGE0|*`
+
+    - **Name**: Type – Text, Merge tag – `*|FNAME|*` or `*|MERGE1|*`
+
+    - **Phone Number**: Type – Phone, Merge tag – `*|PHONE|*` or `*|MERGE4|*`
+
+    - **Address**: Type – Text, Merge tag – `*|ADDRESS|*` or `*|MERGE2|*`, Default – "ADDRESS"
+
+![image](images/apps/38.png)
+
+You're All Set!
+
+**Step 4**: Once your Mailchimp fields are ready and your API Key is created, you can connect this in FormBold by:
+
+- Going to your Form Settings →  **Apps → Mailchimp**
+
+- Paste your API Key and select the audience
+
+- Map form fields using the Field Mapper
+
+**Step 5**: Test Integration:  Submit a test form and check Mailchimp to confirm the sync.
+
+## Zendesk
+
+Connect FormBold form with Zendesk to automatically create support tickets, manage leads, or sync customer data via the Zendesk API.
+
+Follow these steps:
+
+**Step 1**: Find Your Zendesk Subdomain
+
+Subdomain uniquely identifies your workspace and is required for all API calls.
+
+- Go to your **Zendesk Admin Center**
+- Check the URL in your browser  
+  
+  Example: `https://abc-lab.zendesk.com`  → **Subdomain**: `abc-lab`
+
+![image](images/apps/39.png)
+
+**Step 2**: Get Your Primary Zendesk Email
+
+You’ll need your primary Zendesk email for API authentication.
+
+- Click your **profile icon** (top-right) → **View Profile**
+- Under the **Account** tab, note your **primary email address**
+
+![image](images/apps/41.png)
+
+We will use this email when setting up the API connection inside FormBold.
+
+**Step 3**: Generate an API Token
+
+Zendesk uses tokens instead of passwords for secure API access.
+
+- Click the **grid icon** (top-right) → **Admin Center**
+- Navigate to: 
+
+    **Apps and integrations → APIs → Zendesk API**
+
+- Enable **Token Access** (toggle ON)
+- Click **Add API Token**
+- Give it a name (e.g., `FormBold Integration`)
+
+- Copy and store the generated token safely  
+
+![image](images/apps/40.png)
+
+>  ⚠️ *You won’t be able to view it again*
+
+we’ll use this in combination with the email for API authentication.
+
+**Step 4**: Connect Zendesk in FormBold
+
+Make sure you have:
+
+- Your **Zendesk subdomain**
+- Your **primary email**
+- The **API token**
+
+Then:
+
+- Go to **Form Settings** in FormBold
+- Open the **Apps** tab → Select **Zendesk**
+- Paste in the details and map the form fields
+
+Submit a **test form** entry to make sure Zendesk integration is working correctly.
+
+## Make (Formerly Integromat)
+
+Connect the FormBold form to Make.com to automate actions like sending form submissions to Google Sheets, CRMs, or other supported apps.
+
+Follow these steps:
+
+**Step 1**: Create a New Scenario
+- Log in to [Make.com](https://www.make.com)
+- Click **New scenario** to open the scenario editor
+
+![image](images/apps/42.png)
+
+**Step 2**: Add a Webhook Module
+- Click the **+** icon
+- Search for **Webhooks** → Select **Custom Webhook**
+- Click **Create a webhook**
+
+![image](images/apps/43.png)
+
+
+**Step 3**: Configure the Webhook
+- Enter a webhook name (e.g., `formbold-webhook`)
+- Click **Save** to generate the webhook URL
+
+![image](images/apps/44.png)
+
+- **Copy** the URL (e.g., `https://hook.eu2.make.com/xxxxxx`)
+- Submit a test form in FormBold to capture the data structure
+
+![image](images/apps/45.png)
+
+
+**Step 4**: Connect Google Sheets
+- Click the **+** icon to add another module
+- Search for **Google Sheets** → Select **Add a Row**
+- Configure:
+  - **Connection**: Connect your Google account
+  - **Search Method**: Select "Search by path"
+  - **Drive**: e.g., "My Drive"
+  - **Spreadsheet**: Choose your file
+  - **Mapping**: Map webhook fields to sheet columns
+- Click **Save**
+
+![image](images/apps/46.png)
+
+**Step 5**: Run and Automate
+- Click **Run once** to test
+- If successful, toggle **Immediately as data arrives** to enable automation
+- Check the  Google Sheet to confirm real-time data sync
+
+![image](images/apps/47.png)
+
+## Zapier 
+
+Use Zapier to connect the FormBold form to thousands of apps—like Google Calendar, Notion, and Trello—without writing code.
+
+Follow these steps:
+
+**Step 1**: Create a Zapier Account
+
+Sign up at [zapier.com](https://zapier.com) if you don’t have an account.
+
+**Step 2**: Create a Zap with Webhook Trigger
+
+- From Zapier Dashboard, Click **Create Zap**
+
+![image](images/apps/48.png)
+
+- Under **Trigger**, search for **Webhooks by Zapier**
+
+![image](images/apps/49.png)
+
+![image](images/apps/50.png)
+
+- Choose the **Catch Hook** event, this lets Zapier listen for incoming HTTP requests (like form submissions)
+
+![image](images/apps/51.png)
+
+- Click **Continue**
+
+**Step 3**: Copy the Webhook URL
+
+- Zapier will generate a unique Webhook URL
+
+- Click **Copy** to save it
+
+![image](images/apps/52.png)
+
+- Use this URL in the FormBold form to send a `POST` request
+
+![image](images/apps/53.png)
+
+> Tip: You can also test this URL with Postman or a cURL request before wiring it into your form.
+
+**Step 4**: Test the Webhook Trigger
+
+- Submit a test form entry or send a test POST request to the copied URL
+- In Zapier, click **Test Trigger**
+- Confirm sample data is received
+- Click **Continue with selected record**
+
+![image](images/apps/54.png)
+
+**Step 5**: Add Google Calendar as the Action
+- Under **Action**, search for **Google Calendar**
+- Select the **Create Calendar** event
+- Click **Continue**
+
+![image](images/apps/55.png)
+
+**Step 6**: Connect Google Account
+- Sign in with your Google account
+- Authorize access and Click **Continue**
+
+**Step 7**: Map Calendar Fields
+Map your form fields to Google Calendar fields:
+
+- **Name** → Form Submission Name
+- **Description** → Add fields like:
+  - Email → Form Submission Email
+  - Company → Form Submission Company
+  - Phone → Form Submission Phone
+
+![image](images/apps/56.png)
+
+> Use **Copilot Suggestions** in Zapier to auto-fill mappings.
+
+**Step 8**: Test the Action
+- Zapier will create a calendar entry based on your mapped data
+- Check your Google Calendar to verify it’s working
+
+**Step 9**: Publish Your Zap
+- Click **Publish** to activate your Zap
+- Your Zap will now trigger automatically on every form submission
+
+You’ve successfully set up a live Zap that:
+
+- Triggers on FormBold form submissions via Webhook
+- Sends the data to Google Calendar as a new calendar or event
+
+## HubSpot 
+
+Connect the FormBold form to HubSpot to automatically send leads, contacts, or form data to your CRM.
+
+Follow these steps:
+
+**Step 1**: Start the Integration
+
+- Go to **Form Settings → Apps**
+
+- Click the **HubSpot** button
+
+![image](images/apps/57.png)
+
+**Step 2**: Log In to HubSpot
+
+- If you're already logged in, a **permission request** screen will appear  
+
+- If not, you’ll be redirected to the **login/signup page**  
+
+- Use the HubSpot account where you want to store submissions
+
+![image](images/apps/58.png)
+
+
+**Step 3**: Authorize the Connection
+
+- Click **Connect App** to authorize FormBold  
+
+- This securely links your FormBold account to HubSpot
+
+![image](images/apps/59.png)
+
+You're All Set!
+
+Once connected successfully, you'll see a confirmation message in FormBold showing that the HubSpot integration is active.
+
+![image](images/apps/60.png)
+
+Form submissions will now automatically sync with your HubSpot CRM.

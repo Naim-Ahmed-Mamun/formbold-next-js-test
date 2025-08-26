@@ -4,11 +4,11 @@ import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBre
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import DashboardContent from "../../../../components/Account/Dashboard/DashboardContent";
 
-const AccountDashboardArea = () => {
+const AccountDashboardArea = ({data}) => {
   return (
       <AccountPageLayout>
         <AccountPageBreadcrumb pageName="Dashboard" />
-        <DashboardContent />
+        <DashboardContent userDashboard={data} />
       </AccountPageLayout>
   );
 };

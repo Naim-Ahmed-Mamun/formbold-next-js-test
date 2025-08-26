@@ -1,5 +1,6 @@
 import axios from "axios";
 import { signOut } from "next-auth/react";
+import Cookies from "js-cookie";
 
 export const openAuthModal = ({ setShowModal }) => {
   setShowModal(true);
@@ -22,6 +23,8 @@ export const handleLogout = async () => {
     // Clear all storage
     localStorage.clear();
     sessionStorage.clear();
+    Cookies.remove("access_token");
+    Cookies.remove("user_info");
     
     // Clear cookies
     document.cookie.split(";").forEach((cookie) => {

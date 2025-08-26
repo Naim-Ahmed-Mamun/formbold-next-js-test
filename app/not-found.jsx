@@ -1,9 +1,5 @@
+"use client";
 import Link from "next/link";
-
-export const metadata = {
-  title: "Page Not Found",
-  robots: "noindex"
-};
 
 export default function NotFound() {
   return (

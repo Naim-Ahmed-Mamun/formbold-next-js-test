@@ -3,6 +3,8 @@ import Script from "next/script";
 import config from "../services/config";
 
 export default function PaddleScript() {
+ 
+
   return (
     <>
       <Script

@@ -11,7 +11,7 @@ import SubmissionsTabContent from "./SubmissionsTabContent";
 
 const tabs = ["integration", "submissions", "settings", "apps"];
 
-const FormSettingContent = () => {
+const FormSettingContent = ({submissionData}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -43,7 +43,7 @@ const FormSettingContent = () => {
 
       <div>
         {openTab === "integration" && <IntegrationTabContent />}
-        {openTab === "submissions" && <SubmissionsTabContent />}
+        {openTab === "submissions" && <SubmissionsTabContent submissionData={submissionData} />}
         {openTab === "settings" && <FormSettingsTabContent />}
         {openTab === "apps" && <AppTabContent />}
       </div>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useClickOutside from "../../hooks/useClickOutside";
+import Cookies from "js-cookie";
 
 const ActionButtons = () => {
   const router = useRouter();
@@ -31,6 +32,8 @@ const ActionButtons = () => {
       // Clear storage
       localStorage.clear();
       sessionStorage.clear();
+      Cookies.remove("access_token");
+      Cookies.remove("user_info");
 
       // Clear cookies
       document.cookie.split(";").forEach((cookie) => {

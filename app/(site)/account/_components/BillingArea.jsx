@@ -10,13 +10,16 @@ import {
   getPricingPageData,
   resetPaddleCheckout,
 } from "../../../../actions/PricingActions";
+import useAuth from "../../../../hooks/useAuth";
 
 import withAuth from "../../../../hoc/withAuth";
 import config from "../../../../services/config";
 import Emitter from "../../../../services/emitter";
 
-const BillingArea = () => {
+const BillingArea = ({pricingData}) => {
   const dispatch = useDispatch();
+  const {user} = useAuth();
+  const userData = user();
 
   const signInData = useSelector((state) => state.auth?.signIn);
   const emailVeryfied = useSelector((state) => state.auth?.emailVerified);
@@ -38,6 +41,12 @@ const BillingArea = () => {
         successCallback: checkoutCompleted,
         closeCallback: paddleCloseCallback,
         success: `${config.siteURL}/thank-you`,
+        customData: { userId: userData?.id, email: userData?.email, name: userData?.name },
+        ...(userData?.email && {
+          customer: {
+            email: userData.email,
+          },
+        }),
       });
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +61,7 @@ const BillingArea = () => {
     <>
       <AccountPageLayout>
         <AccountPageBreadcrumb pageName="Billing and Subscription Management" />
-        <PricingPlan billing />
+        <PricingPlan billing pricingPage={pricingData} />
       </AccountPageLayout>
     </>
   );

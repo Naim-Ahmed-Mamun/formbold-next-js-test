@@ -24,6 +24,7 @@ import {
 } from "../actions/AccountSettings";
 import { handleSessionLogout } from "../components/services/login";
 import { BILLING_PAGE_DATA_SUCCESS } from "../actions/PricingActions";
+import Cookies from "js-cookie";
 
 const initialState = {
   signIn: undefined,
@@ -40,6 +41,10 @@ export default function auth(state = initialState, action) {
     case SIGN_IN_SUCCESS:
       localStorage.setItem("access_token", action?.credentials?.data?.token);
       localStorage.setItem("user_info", JSON.stringify(action?.credentials?.data?.user));
+      // cookies
+      Cookies.set('access_token', action?.credentials?.data?.token);
+      Cookies.set('user_info', JSON.stringify(action?.credentials?.data?.user));
+
       toast.success(action?.credentials?.message);
       const newObj = {
         userInfo: action?.credentials?.data?.user,
@@ -57,6 +62,10 @@ export default function auth(state = initialState, action) {
     case DELETE_USER_ACCOUNT_SUCCESS:
       localStorage.removeItem("access_token");
       localStorage.removeItem("user_info");
+
+      Cookies.remove("access_token");
+      Cookies.remove("user_info");
+
       handleSessionLogout();
       window.location.href = "/";
       return {
@@ -66,6 +75,10 @@ export default function auth(state = initialState, action) {
     case MAKE_USER_LOGGED_IN_SUCCESS:
       localStorage.setItem("access_token", action?.credentials?.data?.token);
       localStorage.setItem("user_info", JSON.stringify(action?.credentials?.data?.user));
+      // cookies
+      Cookies.set('access_token', action?.credentials?.data?.token);
+      Cookies.set('user_info', JSON.stringify(action?.credentials?.data?.user));
+
       toast.success(action?.credentials?.message);
       const newUserObj = {
         userInfo: action?.credentials?.data?.user,
@@ -82,6 +95,9 @@ export default function auth(state = initialState, action) {
       };
     case GET_USER_PROFILE_SUCCESS:
       localStorage.setItem("user_info", JSON.stringify(action?.data?.user));
+      // cookies
+      Cookies.set('user_info', JSON.stringify(action?.data?.user));
+
       const updatedUserData = {
         userInfo: action?.data?.user,
         token: state.signIn.token,
@@ -92,6 +108,9 @@ export default function auth(state = initialState, action) {
       };
     case GET_USER_REQUIRED_DATA_SUCCESS:
       localStorage.setItem("user_info", JSON.stringify(action?.credentials?.data?.user));
+      // cookies
+      Cookies.set('user_info', JSON.stringify(action?.credentials?.data?.user));
+
       toast.success(action?.credentials?.message);
       const finalUserData = {
         userInfo: action?.credentials?.data?.user,
@@ -110,6 +129,11 @@ export default function auth(state = initialState, action) {
     case REGISTER_SUCCESS:
       localStorage.setItem("access_token", action?.credentials?.data?.token);
       localStorage.setItem("user_info", JSON.stringify(action?.credentials?.data?.user));
+
+      // cookies
+      Cookies.set('access_token', action?.credentials?.data?.token);
+      Cookies.set('user_info', JSON.stringify(action?.credentials?.data?.user));
+
       toast.success(action?.credentials?.message);
       const signInDataAfterRegister = {
         userInfo: action?.credentials?.data?.user,
@@ -141,6 +165,10 @@ export default function auth(state = initialState, action) {
     case SIGNED_OUT:
       localStorage.removeItem("access_token");
       localStorage.removeItem("user_info");
+      // cookies
+      Cookies.remove("access_token");
+      Cookies.remove("user_info");
+
       handleSessionLogout();
       window.location.href = "/";
       return { ...initialState };
@@ -148,6 +176,10 @@ export default function auth(state = initialState, action) {
     case USER_ACTIVATION_SUCCESS:
       localStorage.setItem("access_token", action?.credentials?.data?.token);
       localStorage.setItem("user_info", JSON.stringify(action?.credentials?.data?.user));
+      // cookies
+      Cookies.set('access_token', action?.credentials?.data?.token);
+      Cookies.set('user_info', JSON.stringify(action?.credentials?.data?.user));
+
       toast.success(action?.credentials?.message);
       const finalNewObj = {
         userInfo: action?.credentials?.data?.user,
@@ -161,8 +193,12 @@ export default function auth(state = initialState, action) {
         hasSubscription: action?.credentials?.data?.hasSubscription,
       };
     case MAKE_USER_SIGNED_IN:
-      localStorage.setItem("access_token", action?.payloadpayload?.token);
+      localStorage.setItem("access_token", action?.payload?.token);
       localStorage.setItem("user_info", JSON.stringify(action?.payload?.user));
+      // cookies
+      Cookies.set('access_token', action?.payload?.token);
+      Cookies.set('user_info', JSON.stringify(action?.payload?.user));
+
       toast.success(action?.payload?.message);
       const finalUserObj = {
         userInfo: action?.payload?.user,
@@ -178,6 +214,10 @@ export default function auth(state = initialState, action) {
     case UPDATE_USER_PROFILE_SUCCESS:
       localStorage.removeItem("user_info");
       localStorage.setItem("user_info", JSON.stringify(action?.data?.user));
+      // cookies
+      Cookies.remove("user_info");
+      Cookies.set('user_info', JSON.stringify(action?.data?.user));
+
       toast.success(action?.message);
       const updatedUser = {
         ...state.signIn,
@@ -204,6 +244,10 @@ export default function auth(state = initialState, action) {
       };
       localStorage.removeItem("user_info");
       localStorage.setItem("user_info", JSON.stringify(updateUserInfo));
+      // cookies
+      Cookies.remove("user_info");
+      Cookies.set('user_info', JSON.stringify(updateUserInfo));
+
       return {
         ...state,
         signIn: {
@@ -218,6 +262,10 @@ export default function auth(state = initialState, action) {
       };
       localStorage.removeItem("user_info");
       localStorage.setItem("user_info", JSON.stringify(updateUserInfoAfterEmailAdd));
+      // cookies
+      Cookies.remove("user_info");
+      Cookies.set('user_info', JSON.stringify(updateUserInfoAfterEmailAdd));
+      
       return {
         ...state,
         signIn: {

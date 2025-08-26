@@ -8,33 +8,37 @@ import InvoicesEmptyState from "../../../../components/Account/Invoices/Invoices
 
 import { isEmpty } from "lodash";
 import InvoicesTable from "../../../../components/Account/Invoices/InvoicesTable";
-import Loader from "../../../../components/Icons/Loader";
 import withAuth from "../../../../hoc/withAuth";
 
-const InvoicesArea = () => {
+const InvoicesArea = ({ userInvoiceData }) => {
   const dispatch = useDispatch();
 
-  const userInfo = useSelector((state) => state.auth?.signIn?.userInfo);
-  const userInvoices = useSelector((state) => state.invoices);
-  const loading = userInvoices?.loading;
-  const hasSubscription = userInfo?.hasSubscription;
+  // const userInfo = useSelector((state) => state.auth?.signIn?.userInfo);
+  // const userInvoices = useSelector((state) => state.invoices);
+  // const loading = userInvoices?.loading;
+  // const hasSubscription = userInfo?.hasSubscription;
 
   useEffect(() => {
     dispatch(getInvoicesData());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <AccountPageLayout>
         <AccountPageBreadcrumb pageName="Invoices" />
-        {loading ? (
+        {userInvoiceData && !isEmpty(userInvoiceData) ? (
+          <InvoicesTable invoices={userInvoiceData} />
+        ) : (
+          <InvoicesEmptyState />
+        )}
+        {/* {loading ? (
           <Loader show height="100px" size="100px" />
         ) : userInvoices?.data && !isEmpty(userInvoices?.data) ? (
           <InvoicesTable invoices={userInvoices?.data} />
         ) : (
           <InvoicesEmptyState />
-        )}
+        )} */}
       </AccountPageLayout>
     </>
   );

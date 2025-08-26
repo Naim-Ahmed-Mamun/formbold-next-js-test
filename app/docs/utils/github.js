@@ -103,7 +103,7 @@ export async function fetchSidebarFromGitHub() {
     
     if (DEBUG_MODE) {
       console.log('✅ Successfully fetched sidebar JSON');
-      console.log('Sidebar structure:', JSON.stringify(sidebarJson, null, 2));
+      // console.log('Sidebar structure:', JSON.stringify(sidebarJson, null, 2));
     }
     
     // Cache the sidebar
@@ -175,7 +175,7 @@ export function extractFilePathsFromSidebar(sidebar) {
     });
     
     if (DEBUG_MODE) {
-      console.log('📋 Extracted file paths:', paths);
+      // console.log('📋 Extracted file paths:', paths);
     }
     
     return paths;

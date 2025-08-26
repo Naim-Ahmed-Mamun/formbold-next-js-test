@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import configs from "../config/index";
 import Client from "../config/axiosClient";
 import Loader from "../components/Icons/Loader";
-import { forceLogout, signOut } from "../actions";
+import { forceLogout } from "../actions";
 
 const withAuth = (Component) => {
   const Auth = (props) => {

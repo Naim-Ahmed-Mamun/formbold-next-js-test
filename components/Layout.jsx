@@ -21,7 +21,7 @@ export default function Layout({ children }) {
         <SignUpModal />
         <ForgotPassModal />
       </Suspense>
-      <ToastContainer />
+      <ToastContainer position="bottom-right"  />
     </>
   );
 }

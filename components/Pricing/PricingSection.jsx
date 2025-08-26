@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import paddleImage from "../../public/pricing/paddle.svg";
 import PaymentMethods from "../../public/pricing/payment-methods.svg";
@@ -8,7 +9,7 @@ import Faq from "./Faq";
 import PricingPlan from "./PricingPlan";
 import PricingTable from "./PricingTable";
 
-export default function PricingSection() {
+export default function PricingSection({pricingData}) {
   return (
     <section className="pb-12 pt-24 sm:pt-32 md:pb-16 lg:pt-[140px]">
       <div className="container">
@@ -20,7 +21,7 @@ export default function PricingSection() {
         />
       </div>
 
-      <PricingPlan />
+      <PricingPlan pricingPage={pricingData} />
 
       {/* <FreePlanCard /> */}
 

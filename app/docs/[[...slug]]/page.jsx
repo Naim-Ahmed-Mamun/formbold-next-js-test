@@ -7,7 +7,7 @@ import { Callout, Tabs } from 'nextra/components';
 import { evaluate } from 'nextra/evaluate';
 
 import { siteURL } from '../../../services/config';
-import { fetchFromGitHub, GITHUB_RAW_BASE } from '../utils/github';
+import { extractFilePathsFromSidebar, fetchFromGitHub, fetchSidebarFromGitHub, GITHUB_RAW_BASE } from '../utils/github';
 
 const { wrapper: Wrapper, ...components } = getMDXComponents({
   $Tabs: Tabs,

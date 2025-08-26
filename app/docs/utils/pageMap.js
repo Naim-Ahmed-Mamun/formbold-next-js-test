@@ -80,13 +80,87 @@ let pageMap = {
       name: 'spam',
       route: '/docs/spam',
       title: 'Spam Protection',
-      frontMatter: {}
+      frontMatter: {},
     },
     {
       name: 'apps',
       route: '/docs/apps',
       title: 'Connecting Apps',
-      frontMatter: {}
+      frontMatter: {},
+      children: [
+        {
+          name: 'email',
+          route: '#email',
+          title: 'Email',
+          frontMatter: {}
+        },
+        {
+          name: 'slack',
+          route: '#slack',
+          title: 'Slack',
+          frontMatter: {}
+        },
+        {
+          name: 'googleSheets',
+          route: '#google-sheets',
+          title: 'Google Sheets',
+          frontMatter: {}
+        },
+        {
+          name: 'autoResponder',
+          route: '#auto-responder',
+          title: 'Auto Responder',
+          frontMatter: {}
+        },
+        {
+          name: 'notion',
+          route: '#notion',
+          title: 'Notion',
+          frontMatter: {}
+        },
+        {
+          name: 'telegram',
+          route: '#telegram',
+          title: 'Telegram',
+          frontMatter: {}
+        },
+        {
+          name: 'discord',
+          route: '#discord',
+          title: 'Discord',
+          frontMatter: {}
+        },
+        {
+          name: 'mailchimp',
+          route: '#mailchimp',
+          title: 'Mailchimp',
+          frontMatter: {}
+        },
+        {
+          name: 'zendesk',
+          route: '#zendesk',
+          title: 'Zendesk',
+          frontMatter: {}
+        },
+        {
+          name: 'make',
+          route: '#make-formerly-integromat',
+          title: 'Make (formerly Integromat)',
+          frontMatter: {}
+        },
+        {
+          name: 'zapier',
+          route: '#zapier',
+          title: 'Zapier',
+          frontMatter: {}
+        },
+        {
+          name: 'hubspot',
+          route: '#hubspot',
+          title: 'HubSpot',
+          frontMatter: {}
+        }
+      ]
     },
     {
       name: 'examples',

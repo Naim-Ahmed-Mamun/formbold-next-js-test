@@ -126,86 +126,88 @@ const RegistrationArea = () => {
         </div>
 
         <div>
-          <div className="mb-5">
-            <label
-              htmlFor="email"
-              className="mb-2.5 block text-base font-medium text-black"
-            >
-              Your Full Name
-            </label>
-            <input
-              type="text"
-              name="fullName"
-              id="fullName"
-              placeholder="Enter your Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
+          <form onSubmit={submitRegitrationForm}>
+            <div className="mb-5">
+              <label
+                htmlFor="email"
+                className="mb-2.5 block text-base font-medium text-black"
+              >
+                Your Full Name
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                placeholder="Enter your Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
+              />
+              {err &&
+                err.name &&
+                err.name.map((err, index) => (
+                  <p key={index} style={{ color: "red" }}>
+                    {err}
+                  </p>
+                ))}
+            </div>
+            <div className="mb-5">
+              <label
+                htmlFor="email"
+                className="mb-2.5 block text-base font-medium text-black"
+              >
+                Your Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
+              />
+              {err &&
+                err.email &&
+                err.email.map((err, index) => (
+                  <p key={index} style={{ color: "red" }}>
+                    {err}
+                  </p>
+                ))}
+            </div>
+            <div className="mb-5">
+              <label
+                htmlFor="password"
+                className="mb-2.5 block text-base font-medium text-black"
+              >
+                Your Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
+              />
+              {err &&
+                err.password &&
+                err.password.map((err, index) => (
+                  <p key={index} style={{ color: "red" }}>
+                    {err}
+                  </p>
+                ))}
+            </div>
+            <ButtonWithText
+              type="submit"
+              text="Sign Up"
+              loading={loader}
+              loaderColor="white"
+              className="mb-6 h-[52px] w-full rounded-full bg-primary px-4 text-base font-medium text-white duration-300 hover:bg-fb-primary-hover"
             />
-            {err &&
-              err.name &&
-              err.name.map((err, index) => (
-                <p key={index} style={{ color: "red" }}>
-                  {err}
-                </p>
-              ))}
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="email"
-              className="mb-2.5 block text-base font-medium text-black"
-            >
-              Your Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
-            />
-            {err &&
-              err.email &&
-              err.email.map((err, index) => (
-                <p key={index} style={{ color: "red" }}>
-                  {err}
-                </p>
-              ))}
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="password"
-              className="mb-2.5 block text-base font-medium text-black"
-            >
-              Your Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="flex h-[52px] w-full items-center rounded-full border border-fb-gray-4 bg-white px-6 text-black placeholder-fb-dark-5 outline-none duration-300 focus:border-transparent focus:bg-fb-gray focus:shadow-inputHover focus:ring-2 focus:ring-primary/20 hover:border-transparent hover:bg-fb-gray hover:shadow-inputHover"
-            />
-            {err &&
-              err.password &&
-              err.password.map((err, index) => (
-                <p key={index} style={{ color: "red" }}>
-                  {err}
-                </p>
-              ))}
-          </div>
-          <ButtonWithText
-            type="submit"
-            text="Sign Up"
-            loading={loader}
-            loaderColor="white"
-            className="mb-6 h-[52px] w-full rounded-full bg-primary px-4 text-base font-medium text-white duration-300 hover:bg-fb-primary-hover"
-            onClickCallback={submitRegitrationForm}
-          />
+          </form>
+
           <p className="flex items-center justify-center text-center text-sm font-medium text-body-color">
             Already using FormBold?
             <button onClick={(e) => router.push("/auth/login")}>

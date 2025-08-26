@@ -1,5 +1,6 @@
 import { siteURL } from "../../../services/config"
-import PricingMain from "./_components/PricingMain"
+import PricingMain from "./_components/PricingMain";
+import {getPricingPageData} from "../../../api/pricing";
 
 export const metadata = {
   title:"Pricing | FormBold",
@@ -30,8 +31,10 @@ export const metadata = {
   },
 }
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const pricingData = await getPricingPageData();
+  // console.log(pricingData, "pricingData in PricingPage");
   return (
-    <PricingMain/>
+    <PricingMain pricingData={pricingData?.data} />
   )
 }

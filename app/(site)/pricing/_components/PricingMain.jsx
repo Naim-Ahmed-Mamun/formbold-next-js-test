@@ -10,9 +10,12 @@ import {
   resetPaddleCheckout,
 } from "../../../../actions/PricingActions";
 import PricingSection from "../../../../components/Pricing/PricingSection";
+import useAuth from "../../../../hooks/useAuth";
 
-const PricingMain = () => {
+const PricingMain = ({pricingData}) => {
   const dispatch = useDispatch();
+  const {user} = useAuth();
+  const userData = user();
 
   const signInData = useSelector((state) => state.auth?.signIn);
   const emailVeryfied = useSelector((state) => state.auth?.emailVerified);
@@ -34,10 +37,16 @@ const PricingMain = () => {
         successCallback: checkoutCompleted,
         closeCallback: paddleCloseCallback,
         success: `${config.siteURL}/thank-you`,
+        customData: { userId: userData?.id, email: userData?.email, name: userData?.name },
+        ...(userData?.email && {
+          customer: {
+            email: userData.email,
+          },
+        }),
       });
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userData]);
 
   useEffect(() => {
     getPageData();
@@ -45,7 +54,7 @@ const PricingMain = () => {
   }, [signInData, emailVeryfied, dispatch]);
 
   return (
-      <PricingSection />
+      <PricingSection pricingData={pricingData} />
   );
 };
 

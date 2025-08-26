@@ -9,11 +9,12 @@ import TokenListCard from "../../../../components/Account/Webhooks/TokenListCard
 import ApiGuideCard from "../../../../components/Account/Webhooks/ApiGuideCard";
 import WebhooksCreateFormBar from "../../../../components/Account/Webhooks/WebhooksCreateFormBar";
 import withAuth from "../../../../hoc/withAuth";
+import ApiTokenGuideCard from "../../../../components/Account/Webhooks/ApiTokenGuideCard";
 
 // const tabs = ["api_tokens", "api_guide", "webhooks_guide"];
 const tabs = ["api_tokens", "api_guide"];
 
-const WebhooksArea = () => {
+const WebhooksArea = ({tokens}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [openTab, setOpenTab] = useState("");
@@ -42,13 +43,13 @@ const WebhooksArea = () => {
         <WebhooksCreateFormBar openTab={openTab} setOpenTab={setOpenTab} />
 
         {openTab === "api_tokens" && (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div>
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <CreateTokenCard />
+              <TokenListCard tokens={tokens} />
             </div>
-            <div>
-              <TokenListCard />
-            </div>
+
+            <ApiTokenGuideCard />
           </div>
         )}
 

@@ -9,7 +9,6 @@ const withNextra = nextra({
 export default withNextra({
   reactStrictMode: false,
   images: {
-    domains: [],
     remotePatterns: [
       {
         protocol: 'https',

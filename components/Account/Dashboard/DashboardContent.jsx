@@ -7,11 +7,10 @@ import TotalFormsCard from "./TotalFormsCard";
 import { getUserDashboardData } from "../../../actions/UserDashboard";
 import { isNil } from "lodash";
 
-const DashboardContent = () => {
+const DashboardContent = ({userDashboard}) => {
   const dispatch = useDispatch();
-  const userDashboard = useSelector((state) => state.userDashboard);
+  // const userDashboard = useSelector((state) => state.userDashboard);
 
-  const loading = userDashboard?.loading;
   const formsCount = userDashboard?.formsCount;
   const statistics = userDashboard?.statistics;
   const plans = userDashboard?.plans;

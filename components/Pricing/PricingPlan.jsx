@@ -1,3 +1,4 @@
+"use client";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -98,11 +99,14 @@ const PricingPlanHeader = ({ billing, yearly, setYearly, updatePaymentInfoUrl })
 );
 
 export default function PricingPlan(props) {
+  const { pricingPage } = props;
+  // console.log(pricingPage, "pricingPage in pricing plan");
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const pricingPage = useSelector((state) => state.pricingPage);
-  const plans = useSelector((state) => state.pricingPage?.plans);
+  // const pricingPage = useSelector((state) => state.pricingPage);
+  // const plans = useSelector((state) => state.pricingPage?.plans);
+  const plans = useMemo(() => pricingPage?.plans || [], [pricingPage?.plans]);
   const user = useSelector((state) => state.auth?.signIn?.userInfo);
   const emailVeryfied = useSelector((state) => state.auth?.emailVerified);
   const hasSubscription = useSelector((state) => state.auth?.hasSubscription);
@@ -112,7 +116,7 @@ export default function PricingPlan(props) {
   const [loading, setLoading] = useState({ plan: undefined, loader: false });
   const [yearly, setYearly] = useState(true);
 
-  const finalPlans = useMemo(() => plans.filter((plan) => !plan.is_monthly === yearly), [plans, yearly]);
+  const finalPlans = useMemo(() => plans.filter((plan) => !plan.is_monthly === yearly), [plans, yearly]) || [];
 
   const checkoutCompleted = useCallback(() => {
     // toast.success("Thanks for your purchase. 🥳 - Please, check your email inbox for confirmation link and additional details", {
@@ -195,10 +199,10 @@ export default function PricingPlan(props) {
 
         <div className={`rounded-[22px] border border-fb-gray-2 md:mt-14 ${props?.billing ? "bg-white" : "bg-fb-gray"}`}>
           <div className={`${pricingPage?.pageLoader ? "content-center" : `grid grid-cols-1 md:grid-cols-2 ${yearly ? "xl:grid-cols-4" : "xl:grid-cols-3"}`}`}>
-            {pricingPage?.pageLoader ? (
+            {/* {pricingPage?.pageLoader ? (
               <Loader show />
-            ) : (
-              finalPlans.map((plan, index) => (
+            ) : ( */}
+              {finalPlans.map((plan, index) => (
                 <SinglePricingPlan
                   key={index}
                   plan={plan}
@@ -207,8 +211,8 @@ export default function PricingPlan(props) {
                   setLoading={setLoading}
                   yearly={yearly}
                 />
-              ))
-            )}
+              ))}
+            {/* )} */}
           </div>
         </div>
       </div>

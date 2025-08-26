@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { getUserRequiredData } from "../../../../actions/SigninActions";
 import Loader from "../../../../components/Icons/Loader";
+import Cookies from "js-cookie";
 
 const AdminArea = () => {
   const { data: session } = useSession();
@@ -49,6 +50,7 @@ const AdminArea = () => {
   useEffect(() => {
     if (session && saveAccessToken) {
       localStorage.setItem("access_token", session?.accessToken);
+      Cookies.set('access_token', session?.accessToken);
       dispatch(getUserRequiredData());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

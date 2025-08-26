@@ -1,24 +1,26 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
-import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
+import WithAuth from "../../../../hoc/withAuth";
 import CreateFormBar from "../../../../components/Account/CreateFormBar";
 import SingleFormCard from "../../../../components/Account/SingleFormCard";
-import Loader from "../../../../components/Icons/Loader";
-import WithAuth from "../../../../hoc/withAuth";
+import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
+import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
 
 import { isEmpty } from "lodash";
-import { getAllForms, resetReuestSuccess } from "../../../../actions/FormAction";
+import {
+  getAllForms,
+  resetReuestSuccess,
+} from "../../../../actions/FormAction";
 import FormsEmptyState from "../../../../components/Account/FormsEmptyState";
 
-const AccountFormsArea = () => {
+const AccountFormsArea = ({ allForms }) => {
   const dispatch = useDispatch();
 
   const userInfo = useSelector((state) => state.auth?.signIn?.userInfo);
   const emailVeryfied = useSelector((state) => state.auth?.emailVerified);
-  const allForms = useSelector((state) => state.forms?.forms);
+  // const allForms = useSelector((state) => state.forms?.forms);
   const pageLoader = useSelector((state) => state.forms?.pageLoading);
   const form_page = useSelector((state) => state.forms);
 
@@ -49,15 +51,16 @@ const AccountFormsArea = () => {
               !pageLoader && "grid"
             } grid-cols-1 gap-8 md:grid-cols-2 lg:gap-6 xl:gap-8 2xl:grid-cols-3`}
           >
-            {pageLoader ? (
-              <div className="content-center">
-                <Loader show />
-              </div>
-            ) : (
-              allForms.map((form, index) => (
+            {
+              // pageLoader ? (
+              //   <div className="content-center">
+              //     <Loader show />
+              //   </div>
+              // ) : (
+              allForms?.map((form, index) => (
                 <SingleFormCard form={form} key={index} />
               ))
-            )}
+            }
           </div>
         ) : (
           <FormsEmptyState />
@@ -68,7 +71,3 @@ const AccountFormsArea = () => {
 };
 
 export default WithAuth(AccountFormsArea);
-
-
-
-

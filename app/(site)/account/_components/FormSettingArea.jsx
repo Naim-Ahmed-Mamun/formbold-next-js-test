@@ -4,12 +4,12 @@ import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBre
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import FormSettingContent from "../../../../components/Account/FormSettingContent";
 
-const FormSettingsArea = () => {
+const FormSettingsArea = ({submissionData}) => {
   return (
     <>
       <AccountPageLayout>
         <AccountPageBreadcrumb pageName="Form Settings" />
-        <FormSettingContent />
+        <FormSettingContent submissionData={submissionData} />
       </AccountPageLayout>
     </>
   );
