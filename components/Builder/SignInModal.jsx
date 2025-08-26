@@ -2,7 +2,7 @@
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 // import { signin } from "../../actions/SigninActions";
 import {
@@ -111,7 +111,7 @@ const SignInModal = () => {
   useEffect(() => {
     if (session && saveAccessToken) {
       localStorage.setItem("access_token", session?.accessToken);
-      Cookies.set('access_token', session?.accessToken);
+      // Cookies.set('access_token', session?.accessToken);
       dispatch(getUserRequiredData());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
