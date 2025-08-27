@@ -7,12 +7,12 @@ import {
 import Loader from "../Icons/Loader";
 import useClickOutside from "../../hooks/useClickOutside";
 
-const SubmissionsTabBar = ({ filters, setFilters }) => {
+const SubmissionsTabBar = ({ filters, setFilters,submissionData }) => {
   const dispatch = useDispatch();
 
-  const submissionsData = useSelector(
-    (state) => state.forms?.submissions?.data
-  );
+  // const submissionsData = useSelector(
+  //   (state) => state.forms?.submissions?.data
+  // );
   const forms = useSelector((state) => state.forms);
   const submissionsExport = forms?.submissionsExport;
   const currentForm = forms?.currentForm;
@@ -98,7 +98,7 @@ const SubmissionsTabBar = ({ filters, setFilters }) => {
                 />
               </svg>
             </span>
-            Inbox ({submissionsData?.inboxCount})
+            Inbox ({submissionData?.inboxCount})
           </button>
           <button
             onClick={(e) => handelUpdateFilters(e, "spam", true)}
@@ -130,7 +130,7 @@ const SubmissionsTabBar = ({ filters, setFilters }) => {
                 />
               </svg>
             </span>
-            Spam ({submissionsData?.spamCount})
+            Spam ({submissionData?.spamCount})
           </button>
         </div>
       </div>

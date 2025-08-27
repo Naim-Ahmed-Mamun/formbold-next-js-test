@@ -1,5 +1,5 @@
 "use client";
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import DangerZoneCard from "../../../../components/Account/DangerZoneCard";
@@ -34,4 +34,4 @@ const AccountSettingsArea = () => {
   );
 };
 
-export default withAuth(AccountSettingsArea);
+export default AccountSettingsArea;

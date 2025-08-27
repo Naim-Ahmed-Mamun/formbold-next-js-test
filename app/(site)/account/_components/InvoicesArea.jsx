@@ -8,7 +8,7 @@ import InvoicesEmptyState from "../../../../components/Account/Invoices/Invoices
 
 import { isEmpty } from "lodash";
 import InvoicesTable from "../../../../components/Account/Invoices/InvoicesTable";
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 
 const InvoicesArea = ({ userInvoiceData }) => {
   const dispatch = useDispatch();
@@ -44,4 +44,4 @@ const InvoicesArea = ({ userInvoiceData }) => {
   );
 };
 
-export default withAuth(InvoicesArea);
+export default InvoicesArea;

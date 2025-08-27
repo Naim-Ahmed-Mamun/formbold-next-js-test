@@ -3,7 +3,7 @@ import React from "react";
 import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import FormsEmptyState from "../../../../components/Account/FormsEmptyState";
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 
 const FormsEmptyArea = () => {
   return (
@@ -16,4 +16,4 @@ const FormsEmptyArea = () => {
   );
 };
 
-export default withAuth(FormsEmptyArea);
+export default FormsEmptyArea;

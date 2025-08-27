@@ -13,6 +13,7 @@ import SubmissionsPagination from "./SubmissionsPagination";
 import SubmissionsTabBar from "./SubmissionsTabBar";
 
 const SubmissionsTabContent = ({submissionData}) => {
+  // console.log(submissionData,'submissionData');
   const staticsData = submissionData?.statistics || {};
   const filtered_submissions = submissionData?.submissions?.data || [];
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const SubmissionsTabContent = ({submissionData}) => {
   const searchParams = useSearchParams();
 
   const currentForm = useSelector((state) => state.forms?.currentForm);
-  const submissionsData = useSelector((state) => state.forms?.submissions);
+  // const submissionsData = useSelector((state) => state.forms?.submissions);
   const hasSubscription = useSelector((state) => state.auth?.hasSubscription);
 
   const [filters, setFilters] = useState({
@@ -30,19 +31,19 @@ const SubmissionsTabContent = ({submissionData}) => {
     page: undefined,
   });
 
-  const [filteredSubmissions, setFilteredSubmissions] = useState([]);
-  const [submissionsStatistics, setSubmissionsStatistics] = useState({
-    items: [],
-    categories: [],
-  });
+  // const [filteredSubmissions, setFilteredSubmissions] = useState(submissionData?.submissions?.data || []);
+  // const [submissionsStatistics, setSubmissionsStatistics] = useState({
+  //   items: [],
+  //   categories: [],
+  // });
   const [showPaywallModal, setShowPaywallModal] = useState(false);
 
   const [pagination, setPagination] = useState({
-    total: 0,
-    count: 0,
-    perPage: 10,
-    currentPage: 1,
-    lastPage: 1,
+    total: submissionData?.pagination?.total || 0,
+    count: submissionData?.pagination?.count || 0,
+    perPage: submissionData?.pagination?.perPage || 10,
+    currentPage: submissionData?.pagination?.currentPage || 1,
+    lastPage: submissionData?.pagination?.lastPage || 1,
   });
 
   useEffect(() => {
@@ -99,25 +100,25 @@ const SubmissionsTabContent = ({submissionData}) => {
   };
 
   useEffect(() => {
-    if (submissionsData.data && submissionsData.data?.statistics) {
-      setSubmissionsStatistics({
-        items: submissionsData.data?.statistics?.items,
-        categories: submissionsData.data?.statistics?.categories,
-      });
-    }
-    if (submissionsData.data && submissionsData.data?.submissions?.data) {
-      setFilteredSubmissions(submissionsData.data?.submissions?.data);
-    }
-    if (submissionsData?.data?.pagination) {
+    // if (submissionData.data && submissionData.data?.statistics) {
+    //   setSubmissionsStatistics({
+    //     items: submissionData.data?.statistics?.items,
+    //     categories: submissionData.data?.statistics?.categories,
+    //   });
+    // }
+    // if (submissionData.data && submissionData.data?.submissions?.data) {
+    //   setFilteredSubmissions(submissionData.data?.submissions?.data);
+    // }
+    if (submissionData?.pagination) {
       setPagination({
-        count: submissionsData?.data?.pagination?.count,
-        perPage: submissionsData?.data?.pagination?.perPage,
-        currentPage: submissionsData?.data?.pagination?.currentPage,
-        total: submissionsData?.data?.pagination?.total,
-        lastPage: submissionsData?.data?.pagination?.lastPage,
+        count: submissionData?.pagination?.count,
+        perPage: submissionData?.pagination?.perPage,
+        currentPage: submissionData?.pagination?.currentPage,
+        total: submissionData?.pagination?.total,
+        lastPage: submissionData?.pagination?.lastPage,
       });
     }
-  }, [submissionsData]);
+  }, [submissionData]);
 
   const handelPerPageChange = (e, value) => {
     e.preventDefault();
@@ -143,16 +144,16 @@ const SubmissionsTabContent = ({submissionData}) => {
         items={staticsData?.items}
         categories={staticsData?.categories}
       />
-      <SubmissionsTabBar filters={filters} setFilters={setFilters} />
-      {submissionsData?.loading ? (
+      <SubmissionsTabBar filters={filters} setFilters={setFilters} submissionData={submissionData} />
+      {/* {submissionsData?.loading ? (
         <Loader show />
       ) : (
-        <>
-          {filteredSubmissions.map((submission, index) => (
+        <> */}
+          {filtered_submissions?.map((submission, index) => (
             <SingleSubmission key={index} submission={submission} />
           ))}
-        </>
-      )}
+        {/* </>
+      )} */}
 
       {!hasSubscription && pagination.total > 10 && (
         <div className="mb-12 flex w-full flex-wrap items-center justify-center">

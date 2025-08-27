@@ -8,7 +8,7 @@ import CreateTokenCard from "../../../../components/Account/Webhooks/CreateToken
 import TokenListCard from "../../../../components/Account/Webhooks/TokenListCard";
 import ApiGuideCard from "../../../../components/Account/Webhooks/ApiGuideCard";
 import WebhooksCreateFormBar from "../../../../components/Account/Webhooks/WebhooksCreateFormBar";
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 import ApiTokenGuideCard from "../../../../components/Account/Webhooks/ApiTokenGuideCard";
 
 // const tabs = ["api_tokens", "api_guide", "webhooks_guide"];
@@ -65,4 +65,4 @@ const WebhooksArea = ({tokens}) => {
   );
 };
 
-export default withAuth(WebhooksArea);
+export default WebhooksArea;

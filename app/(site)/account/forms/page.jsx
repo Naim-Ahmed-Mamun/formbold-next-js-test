@@ -1,6 +1,6 @@
 import { siteURL } from "../../../../services/config";
-// import AccountFormsArea from "../_components/AccountFormsArea";
-// import {getAllFormAttempt} from '../../../../api/form';
+import AccountFormsArea from "../_components/AccountFormsArea";
+import {getAllFormAttempt} from '../../../../fetch-api/form';
 
 export const metadata = {
   title: "Account Forms | Formbold",
@@ -10,7 +10,6 @@ export const metadata = {
 };
 
 export default async function AccountFormsPage() {
-  // const forms = await getAllFormAttempt();
-  // return <AccountFormsArea allForms={forms?.data?.forms || []} />;
-  return <h2>Account Forms</h2>;
+  const forms = await getAllFormAttempt();
+  return <AccountFormsArea allForms={forms?.data?.forms || []} />;
 }

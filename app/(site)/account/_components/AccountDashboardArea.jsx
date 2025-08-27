@@ -1,5 +1,5 @@
 "use client"
-import withAuth from '../../../../hoc/withAuth';
+// import withAuth from '../../../../hoc/withAuth';
 import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import DashboardContent from "../../../../components/Account/Dashboard/DashboardContent";
@@ -13,4 +13,4 @@ const AccountDashboardArea = ({data}) => {
   );
 };
 
-export default withAuth(AccountDashboardArea);
+export default AccountDashboardArea;

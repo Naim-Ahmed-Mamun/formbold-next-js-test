@@ -1,5 +1,5 @@
 "use client";
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 import AccountPageBreadcrumb from "../../../../components/Account/AccountPageBreadcrumb";
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
 import FormSettingContent from "../../../../components/Account/FormSettingContent";
@@ -15,4 +15,4 @@ const FormSettingsArea = ({submissionData}) => {
   );
 };
 
-export default withAuth(FormSettingsArea);
+export default FormSettingsArea;

@@ -12,7 +12,7 @@ import {
 } from "../../../../actions/PricingActions";
 import useAuth from "../../../../hooks/useAuth";
 
-import withAuth from "../../../../hoc/withAuth";
+// import withAuth from "../../../../hoc/withAuth";
 import config from "../../../../services/config";
 import Emitter from "../../../../services/emitter";
 
@@ -67,4 +67,4 @@ const BillingArea = ({pricingData}) => {
   );
 };
 
-export default withAuth(BillingArea);
+export default BillingArea;

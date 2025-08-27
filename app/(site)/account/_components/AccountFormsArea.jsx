@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import WithAuth from "../../../../hoc/withAuth";
+// import WithAuth from "../../../../hoc/withAuth";
 import CreateFormBar from "../../../../components/Account/CreateFormBar";
 import SingleFormCard from "../../../../components/Account/SingleFormCard";
 import AccountPageLayout from "../../../../components/Account/AccountPageLayout";
@@ -21,7 +21,7 @@ const AccountFormsArea = ({ allForms }) => {
   const userInfo = useSelector((state) => state.auth?.signIn?.userInfo);
   const emailVeryfied = useSelector((state) => state.auth?.emailVerified);
   // const allForms = useSelector((state) => state.forms?.forms);
-  const pageLoader = useSelector((state) => state.forms?.pageLoading);
+  // const pageLoader = useSelector((state) => state.forms?.pageLoading);
   const form_page = useSelector((state) => state.forms);
 
   useEffect(() => {
@@ -47,9 +47,7 @@ const AccountFormsArea = ({ allForms }) => {
 
         {!isEmpty(allForms) ? (
           <div
-            className={`${
-              !pageLoader && "grid"
-            } grid-cols-1 gap-8 md:grid-cols-2 lg:gap-6 xl:gap-8 2xl:grid-cols-3`}
+            className={`grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-6 xl:gap-8 2xl:grid-cols-3`}
           >
             {
               // pageLoader ? (
@@ -70,4 +68,4 @@ const AccountFormsArea = ({ allForms }) => {
   );
 };
 
-export default WithAuth(AccountFormsArea);
+export default AccountFormsArea;

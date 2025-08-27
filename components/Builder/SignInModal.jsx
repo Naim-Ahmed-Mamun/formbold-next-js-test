@@ -2,7 +2,7 @@
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 // import { signin } from "../../actions/SigninActions";
 import {
@@ -111,7 +111,7 @@ const SignInModal = () => {
   useEffect(() => {
     if (session && saveAccessToken) {
       localStorage.setItem("access_token", session?.accessToken);
-      // Cookies.set('access_token', session?.accessToken);
+      Cookies.set('access_token', session?.accessToken);
       dispatch(getUserRequiredData());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -197,7 +197,7 @@ const SignInModal = () => {
           </div>
 
           <div>
-            {/* <form onSubmit={handleSubmit}> */}
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="email"
@@ -291,10 +291,9 @@ const SignInModal = () => {
                 text="Log in"
                 loading={btnLoader}
                 loaderColor={"white"}
-                onClickCallback={handleSubmit}
                 className="bg-primary hover:bg-fb-primary-hover mb-6 h-[52px] w-full rounded-full px-4 text-base font-medium text-white duration-300"
               />
-            {/* </form> */}
+            </form>
 
             <p className="text-body-color flex items-center justify-center text-center text-sm font-medium">
               Not registered yet?

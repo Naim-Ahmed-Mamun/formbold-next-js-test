@@ -1,6 +1,6 @@
 import { siteURL } from "../../../../services/config";
-// import BillingArea from "../_components/BillingArea";
-// import {getPricingPageData} from "../../../../api/pricing";
+import BillingArea from "../_components/BillingArea";
+import {getPricingPageData} from "../../../../fetch-api/pricing";
 
 export const metadata = {
   title: "Billing | Formbold",
@@ -10,8 +10,7 @@ export const metadata = {
 };
 
 export default async function BillingPage() {
-  // const pricingData = await getPricingPageData();
-  // // console.log(pricingData, "pricingData in billing page");
-  // return <BillingArea pricingData={pricingData?.data} />;
-  return <h2>Billing</h2>;
+  const pricingData = await getPricingPageData();
+  // console.log(pricingData, "pricingData in billing page");
+  return <BillingArea pricingData={pricingData?.data} />;
 }
