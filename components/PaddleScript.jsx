@@ -7,25 +7,16 @@ export default function PaddleScript() {
 
   return (
     <>
+      <Script src="https://cdn.paddle.com/paddle/paddle.js" strategy="afterInteractive" />
       <Script
-        id="paddle-lib"
-        src="https://cdn.paddle.com/paddle/paddle.js"
+        id="paddle-setup"
         strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            Paddle.Setup({ vendor: ${config.paddleVendorId} });
+          `,
+        }}
       />
-
-      <Script id="paddle-init" strategy="afterInteractive">
-        {`
-    window.addEventListener('load', () => {
-        console.log('Paddle loaded');
-        Paddle.Setup({ vendor: ${config.paddleVendorId} });
-        ${
-          config.paddleEnvironmentSandbox === "true"
-            ? 'Paddle.Environment.set("sandbox");'
-            : ""
-        }
-    });
-  `}
-      </Script>
     </>
   );
 }
