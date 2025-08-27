@@ -37,12 +37,12 @@ const PricingMain = ({pricingData}) => {
         successCallback: checkoutCompleted,
         closeCallback: paddleCloseCallback,
         success: `${config.siteURL}/thank-you`,
-        customData: { userId: userData?.id, email: userData?.email, name: userData?.name },
-        ...(userData?.email && {
-          customer: {
-            email: userData.email,
-          },
-        }),
+        // customData: { userId: userData?.id, email: userData?.email, name: userData?.name },
+        // ...(userData?.email && {
+        //   customer: {
+        //     email: userData.email,
+        //   },
+        // }),
       });
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps

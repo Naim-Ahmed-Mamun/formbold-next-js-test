@@ -1,15 +1,15 @@
 import Emitter from "./emitter";
 import config from "./config";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 export const openCheckout = async (product) => {
-  const user = Cookies.get('user_info') || {};
+  // const user = Cookies.get('user_info') || {};
   window.Paddle.Checkout.open({
     product: product,
     success: `${config.siteURL}/thank-you`,
-    email: user?.email || undefined,
+    email: undefined,
     passthrough: { host_url: config.siteURL },
     successCallback: () => {
       window.location.href = `${config.siteURL}/thank-you`;
