@@ -29,7 +29,7 @@ export default function PaddleScript() {
        <Script
         src="https://cdn.paddle.com/paddle/paddle.js"
         onLoad={() => {
-          Paddle.Setup({ vendor: config.paddleVendorId });
+          Paddle.Setup({ vendor: 7232 });
           console.log("Paddle loaded");
           if (config.paddleEnvironmentSandbox === "true") {
             Paddle.Environment.set("sandbox");
