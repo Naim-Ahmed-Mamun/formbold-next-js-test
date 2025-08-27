@@ -161,8 +161,6 @@ export let offers = [];
 const SinglePricingPlan = ({
   plan,
   handelOpenCheckout,
-  loading,
-  setLoading,
   yearly,
 }) => {
   const router = useRouter();
@@ -345,7 +343,6 @@ const SinglePricingPlan = ({
         ) {
           return;
         }
-        setLoading(true);
         callSubscriptionFunc(subsFunc);
       }
     },
@@ -432,8 +429,6 @@ const SinglePricingPlan = ({
               <ButtonWithText
                 disabled={isActive}
                 onClickCallback={(e) => handelOpenCheckout(e, plan)}
-                loading={loading}
-                loaderColor={plan.name !== "Free" && "white"}
                 text={isActive ? "Current Plan" : "Select Plan"}
                 className={`flex h-[52px] w-full items-center justify-center rounded-full border font-heading text-base font-medium duration-300  ${
                   plan.name === "Premium" || plan.name === "Premium - Monthly"
@@ -452,7 +447,6 @@ const SinglePricingPlan = ({
             ) : (
               <ButtonWithText
                 onClickCallback={(e) => handelFreePlanClick(e, freePlan)}
-                loading={loading}
                 text={getFreePlanButtonTitle()}
                 className={`flex h-[52px] w-full items-center justify-center rounded-full border !border-fb-gray-3 bg-white font-heading text-base font-medium !text-black duration-300 hover:!border-primary hover:bg-primary hover:!text-white ${
                   isActive
@@ -484,8 +478,6 @@ const SinglePricingPlan = ({
             <ButtonWithText
               disabled={isActive}
               onClickCallback={(e) => handelOpenCheckout(e, plan)}
-              loading={loading}
-              loaderColor={plan.name !== "Free" && "white"}
               text={isActive ? "Current Plan" : "Select Plan"}
               className={`flex h-[52px] w-full items-center justify-center rounded-full border font-heading text-base font-medium duration-300  ${
                 plan.name === "Premium" || plan.name === "Premium - Monthly"
@@ -504,7 +496,6 @@ const SinglePricingPlan = ({
           ) : (
             <ButtonWithText
               onClickCallback={(e) => handelFreePlanClick(e, freePlan)}
-              loading={loading}
               text={getFreePlanButtonTitle()}
               className={`flex h-[52px] w-full items-center justify-center rounded-full border !border-fb-gray-3 bg-white font-heading text-base font-medium !text-black duration-300 hover:!border-primary hover:bg-primary hover:!text-white ${
                 isActive
