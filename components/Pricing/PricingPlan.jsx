@@ -83,6 +83,7 @@ export default function PricingPlan(props) {
   const updatePaymentInfoUrl = pricingState?.updatePaymentInfoUrl;
 
   const [yearly, setYearly] = useState(true);
+  const [pendingPlan, setPendingPlan] = useState(undefined);
 
   const finalPlans = useMemo(() => plans.filter((plan) => !plan.is_monthly === yearly), [plans, yearly]) || [];
 
@@ -143,6 +144,7 @@ export default function PricingPlan(props) {
         ) {
           return;
         }
+        setPendingPlan(plan.paddle_plan);
         callSubscriptionFunc(subsFunc);
       }
     },
@@ -164,6 +166,7 @@ export default function PricingPlan(props) {
                 key={index}
                 plan={plan}
                 handelOpenCheckout={handelOpenCheckout}
+                loading={pricingState?.loading && pendingPlan === plan.paddle_plan}
                 yearly={yearly}
               />
             ))}

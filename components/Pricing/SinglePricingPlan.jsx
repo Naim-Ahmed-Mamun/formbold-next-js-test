@@ -161,6 +161,7 @@ export let offers = [];
 const SinglePricingPlan = ({
   plan,
   handelOpenCheckout,
+  loading,
   yearly,
 }) => {
   const router = useRouter();
@@ -429,6 +430,7 @@ const SinglePricingPlan = ({
               <ButtonWithText
                 disabled={isActive}
                 onClickCallback={(e) => handelOpenCheckout(e, plan)}
+                loading={loading}
                 text={isActive ? "Current Plan" : "Select Plan"}
                 className={`flex h-[52px] w-full items-center justify-center rounded-full border font-heading text-base font-medium duration-300  ${
                   plan.name === "Premium" || plan.name === "Premium - Monthly"
@@ -478,6 +480,7 @@ const SinglePricingPlan = ({
             <ButtonWithText
               disabled={isActive}
               onClickCallback={(e) => handelOpenCheckout(e, plan)}
+              loading={loading}
               text={isActive ? "Current Plan" : "Select Plan"}
               className={`flex h-[52px] w-full items-center justify-center rounded-full border font-heading text-base font-medium duration-300  ${
                 plan.name === "Premium" || plan.name === "Premium - Monthly"
